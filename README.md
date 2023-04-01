@@ -1,4 +1,4 @@
-# A EBCOM I ~PictNovelsCommunication~
+# A EBCOM I PictNovelsCommunication
 ユーザーが絵や小説を投稿するSNSサイト。
 
 ## サイト概要
