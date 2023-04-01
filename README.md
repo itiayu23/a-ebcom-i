@@ -1,24 +1,44 @@
-# README
+# A EBCOM I ~PictNovelsCommunication~
+ユーザーが絵や小説を投稿するSNSサイト。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+#### ユーザー側の機能
+・アカウント作成なしで、イラストや小説の閲覧や検索が可能。
+・投稿やお気に入り登録、コメントにはアカウント登録を作成して頂ければ可能になる。
+・お気に入り登録では、タグで整理が出来て、後で見返したい時にすぐに出来るようにする。
+・フォローフォロワー機能もあり、相互フォロワーであればDM機能を使ってやり取りすることもできる。
+・また、不適切な投稿者を発見した場合は、通報ボタンから管理人に知らせることが出来るようにする。
+・鍵アカウントを作ることが出来、許可した者だけでわいわいすることも可能。
 
-Things you may want to cover:
+・創作で行き詰ったり、聞きたいことのヒントを聞きたい時はQ＆Aを承認しているユーザーに飛ばしてヒントをもらえることが出来るようにする。
 
-* Ruby version
+#### 管理者側の機能
+・アップデートやイベント、その他お知らせを、ユーザーにお届けする。
+・通報されたユーザーの投稿内容を見て、不適切だと判断された場合には、投稿をできなくさせて注意喚起を行い、改善が見られれば元に戻り、見られなければ退会させることが出来る。
 
-* System dependencies
 
-* Configuration
+### サイトテーマ
+楽しく作品を投稿したり、コミュニケーションが取れるSNS。またユーザー同士やり取りや助け合いが出来るようにする。
 
-* Database creation
+### テーマを選んだ理由
+私自身、昔から絵やマンガ、小説などの創作活動が好きで、仲間内でわいわいかいたり、分からないところや参考になるサイトも併用して楽しみたいからです。
 
-* Database initialization
+### ターゲットユーザ
+一次創作、二次創作が好きな方、見るのが好きな方
 
-* How to run the test suite
+### 主な利用シーン
+作品を投稿したい時、創作に行き詰ったときに他のユーザーに聞きたい時、作品を見たい時など。
 
-* Services (job queues, cache servers, search engines, etc.)
+## 設計書
+<...>
 
-* Deployment instructions
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
