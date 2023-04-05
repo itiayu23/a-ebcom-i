@@ -22,7 +22,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-            <%# if user_signed_in? %>
+            <% if user_signed_in? %>
             <!--ユーザーがサインインしていたら遷移できるページ-->
             <li class="nav-item">
               
@@ -45,7 +45,7 @@
               <i class="fa-solid fa-shield-exclamation"></i>会員 Log Out
               <% end %>
             </li>
-            <%# elsif admin_signed_in? %>
+            <% elsif admin_signed_in? %>
             <!--管理者がログインしている場合-->
             <li class="nav-item">
               <%= link_to destroy_admin_session_path, class: 'nav-link text-success' do %>
