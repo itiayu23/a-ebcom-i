@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
  
   namespace :user do
+    get 'user_pages/index'
+    get 'user_pages/show'
+    get 'user_pages/edit'
+    get 'user_pages/check'
+  end
+  namespace :user do
     get 'picts/new'
     get 'picts/show'
     get 'picts/index'

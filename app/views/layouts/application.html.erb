@@ -27,9 +27,31 @@
             <li class="nav-item">
               
             </li>
+            
+            <li class="nav-item">
+              <%= link_to user_picts_show_path, class: 'nav-link text-success' do %>
+              <i class="fa-solid fa-shield-exclamation"></i> イラスト詳細
+              <% end %>
+            </li>
+            
+            <li class="nav-item">
+              <%= link_to user_novels_show_path, class: 'nav-link text-success' do %>
+              <i class="fa-solid fa-shield-exclamation"></i> 小説詳細
+              <% end %>
+            </li>
+            
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, class: 'nav-link text-success' do %>
+              <i class="fa-solid fa-shield-exclamation"></i>会員 Log Out
+              <% end %>
+            </li>
             <%# elsif admin_signed_in? %>
             <!--管理者がログインしている場合-->
-            
+            <li class="nav-item">
+              <%= link_to destroy_admin_session_path, class: 'nav-link text-success' do %>
+              <i class="fa-solid fa-shield-exclamation"></i>管理人 Log Out
+              <% end %>
+            </li>
             <% else %>
             <!--ログインしていない状態-->
             

@@ -1,2 +1,15 @@
-<h1>User::Novels#new</h1>
-<p>Find me in app/views/user/novels/new.html.erb</p>
+<h1>小説投稿ページ</h1>
+<%= form_with model: Novel.new do |f| %>
+
+<table class="table">
+  
+  <%= f.text_field :title, placeholder: "タイトル" %>
+  
+  <!--別ページにリロードなしで行けて個別に書ける、下書き保存が出来る-->
+  <%= f.text_area :text_body, placeholder: "本文" %>
+  <%= f.text_area :caption, placeholder: "小説の説明、あらすじなど" %>
+  
+  
+
+</table>
+<% end %>
