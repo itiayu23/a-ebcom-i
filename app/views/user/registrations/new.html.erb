@@ -1,0 +1,67 @@
+<h2>新規登録</h2>
+<p>※は後で変更が出来ません、お気をつけてください</p>
+<%= form_with model: @user, url: user_registration_path do |f| %>
+  <%= render "user/shared/error_messages", resource: resource %>
+
+<table class="table">
+  <tbody>
+
+    <tr>
+    <div class="field">
+       <th>※<%= f.label :名前 %></th>
+       <th><%= f.text_field :name, class: "form-control", autofocus: true %></th>
+    </div>
+      </tr>
+
+    <tr>
+    <div class="field">
+       <th><%= f.label :アカウント名 %></th>
+       <th><%= f.text_field :nickname, class: "form-control" %></th>
+    </div>
+      </tr>
+
+      <tr>
+    <div class="field">
+       <th>※<%= f.label :誕生日 %></th>
+       <th><%= f.date_select :birthday,use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1), class: "form-control" %></th>
+    </div>
+      </tr>
+      
+    <tr>
+    <div class="field">
+      <th><%= f.label :メールアドレス %></th>
+      <th><%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+    </th>
+    </div>
+    </tr>
+
+    <tr>
+    <div class="field">
+      <th><%= f.label :パスワード %>
+      <% if @minimum_password_length %>
+      (<%= @minimum_password_length %> 文字以上)</em>
+      <% end %></th>
+      <th><%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+    </th>
+    </div>
+    </tr>
+
+    <tr>
+    <div class="field">
+      <th><%= f.label :パスワード確認用 %></th>
+      <th><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+    </th>
+    </div>
+    </tr>
+
+    <tr>
+    <div class="actions">
+      <th><%= f.submit "新規登録" %></th>
+    </div>
+    </tr>
+
+  </tbody>
+</table>
+<% end %>
+
+<%= render "user/shared/links" %>
