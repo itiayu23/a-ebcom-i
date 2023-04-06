@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :user do
+    get 'bookmarks/index'
+  end
   # namespace :admin do
   #   get 'homes/top'
   #   get 'homes/about'
