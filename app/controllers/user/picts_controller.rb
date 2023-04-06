@@ -3,6 +3,7 @@ class User::PictsController < ApplicationController
   end
 
   def show
+    current_user.read_counts.create(pict_id: @pi.id)
   end
 
   def index

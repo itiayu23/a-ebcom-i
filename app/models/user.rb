@@ -6,8 +6,11 @@ class User < ApplicationRecord
          
          has_many :novels, dependent: :destroy
          has_many :picts, dependent: :destroy
-         has_one_attached :image
+         has_one_attached :profile_image
          has_many :favorites, dependent: :destroy
+         
+        # 閲覧数
+        has_many :read_counts, dependent: :destroy
          
         # フォローフォロワー
         has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -18,6 +21,8 @@ class User < ApplicationRecord
         has_many :followers, through: :reverse_of_relationships, source: :follower
          
         # DMは後で実装
+        # has_many :entries, dependent: :destroy
+        # has_many :messages, dependent: :destroy
         
         # プロフィール画像何もないときのやつ
     def get_profile_image(width, height)
@@ -41,6 +46,14 @@ class User < ApplicationRecord
     def following?(user)
       followings.include?(user)
     end
+    
+    
+    # バリデーション
+    validates :name, uniqueness: true, presence: true
+    validates :nickname, uniqueness: true, presence: true, length: {maximum: 30, minimum: 2}
+    validates :profile, length: {maximum:255}
+    validates :email, uniqueness:true, presence: true
+    validates :birthday, presence: true
     
     # 検索方法分岐
     def self.looks(search, word)
