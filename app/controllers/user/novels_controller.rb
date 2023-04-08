@@ -12,7 +12,7 @@ class User::NovelsController < ApplicationController
     @novel_new.user_id = current_user.id
     if @novel_new.save
       flash[:notice] = "小説が投稿されました"
-      redirect_to user_novels_show(@novel_new.id)
+      redirect_to novel_show(@novel_new.id)
     else
       @user = current_user
       @novels = @user.novels
@@ -48,7 +48,7 @@ class User::NovelsController < ApplicationController
     @novel = Novel.find(params[:id])
     if @novel.update(novel_params)
       flash[:notice] = "小説が更新されました"
-      redirect_to user_novels_show_path(@novel.id)
+      redirect_to novel_show_path(@novel.id)
     else
       render :edit
     end
@@ -57,7 +57,8 @@ class User::NovelsController < ApplicationController
   def destroy
     novel = Novel.find(params[:id])
     novel.destroy
-    redirect_to user_novels_show_path
+    # 自分のページのインデックスに飛ぶようにゆくゆくする
+    redirect_to novel_show_path
   end
 
 private
@@ -70,7 +71,7 @@ def ensure_novel
   @novels = current_user.novels
   @novel = @novels.find_by(id: params[:id])
   # 自分以外の小説の情報合致していないとunlessになる
-  redirect_to user_novels_show_path unless @novel
+  redirect_to novels_path unless @novel
   # unlessだった場合自分の小説一覧に飛ぶ
 end
 

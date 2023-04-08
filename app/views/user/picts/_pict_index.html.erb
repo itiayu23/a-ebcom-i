@@ -1,0 +1,29 @@
+<div class="card-list-container py-5">
+  <% picts.each do |pict| %>
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <%= link_to pict_path(pict.id), class: "text-dark" do %>
+    <%= image_tag pict.get_image, class: "card-img-top"; %>
+    <% end %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+          <p><%= link_to user_page_path(pict.user.id) do %>
+          <%= image_tag pict.user.get_profile_image(100,100), class: "mt-3 rounded-circle"; %></p>
+          <p><%= pict.user.nickname %></p>
+          <% end %>
+        </div>
+        <div class="col-10">
+          <p class="card-title">
+            <%= link_to pict.title, pict_path(pict.id), class: "text-dark" %>
+            <!--<strong>ここに入れたい絵文字</strong>-->
+            <!--いいねをここに入れる-->
+          </p>
+          <p class="card-text">説明：<%= pict.caption %></p>
+          <span><%= link_to "#{pict.comments.count} コメント", pict_path(pict.id), class: "text-dark" %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= paginate picts %>
+</div>

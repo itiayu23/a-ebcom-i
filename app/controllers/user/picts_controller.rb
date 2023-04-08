@@ -11,7 +11,7 @@ class User::PictsController < ApplicationController
     @pict_new.user_id = current_user.id
     if @pict_new.save
       flash[:notice] = "作品が投稿されました"
-      redirect_to user_picts_show(@pict_new.id)
+      redirect_to pict_show(@pict_new.id)
     else
       @user = current_user
       @picts = @user.picts
@@ -44,7 +44,7 @@ class User::PictsController < ApplicationController
   @pict = Pict.find(params[:id])
     if @pict.update(pict_params)
       flash[:notice] = "作品が更新されました"
-      redirect_to user_picts_show_path(@pict.id)
+      redirect_to pict_show_path(@pict.id)
     else
       render :edit
     end
@@ -53,7 +53,7 @@ class User::PictsController < ApplicationController
   def destroy
     pict = Pict.find(params[:id])
     pict.destroy
-    redirect_to user_picts_show_path
+    redirect_to picts_path
   end
   
   private
@@ -66,7 +66,7 @@ class User::PictsController < ApplicationController
   @picts = current_user.picts
   @pict = @picts.find_by(id: params[:id])
   # 自分以外のイラストの情報合致していないとunlessになる
-  redirect_to user_picts_show_path unless @pict
+  redirect_to picts_path unless @pict
   # unlessだった場合自分のイラスト一覧に飛ぶ
   end
   
