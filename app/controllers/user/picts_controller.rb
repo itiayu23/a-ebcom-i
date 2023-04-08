@@ -59,7 +59,7 @@ class User::PictsController < ApplicationController
   private
   
   def pict_params
-    params.require(:pict).permit(:title, :image, :caption)
+    params.require(:pict).permit(:title, :caption, image: [])
   end
   
   def ensure_pict

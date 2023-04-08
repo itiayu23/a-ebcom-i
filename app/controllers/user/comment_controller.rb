@@ -7,7 +7,7 @@ class User::CommentController < ApplicationController
     @comment.save
   end
 
-    def destroy
+  def destroy
     @novel = Novel.find(params[:novel_id])
     @pict = Pict.find(params[:pict_id])
     Comment.find(params[:id]).destroy
@@ -20,4 +20,4 @@ class User::CommentController < ApplicationController
     params.require(:comment).permit(:comment)
   end
 
-  end
+end
