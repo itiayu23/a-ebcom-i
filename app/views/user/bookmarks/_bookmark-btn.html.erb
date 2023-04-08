@@ -1,0 +1,14 @@
+
+        <% if obj.favorited_by?(current_user) %>
+              <p>
+              <%= link_to obj_favorites_path(obj), method: :delete, class: "text-danger", remote: true do %>
+              <i class="fas fa-heart"></i><%= obj.favorites.count %>
+              <% end %>
+              </p>
+            <% else %>
+              <p>
+                <%= link_to obj_favorites_path(obj), method: :post, remote: true do %>
+               <i class="fas fa-heart"></i><%= book.favorites.count %>
+              <% end %>
+              </p>
+            <% end %>
