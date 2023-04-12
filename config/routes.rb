@@ -39,7 +39,7 @@
     end
     
     resources :messages, only: [:create]
-    resources :rooms, only: [:create, :index,]
+    resources :rooms, only: [:create, :index]
 
   end
 
@@ -47,41 +47,4 @@
     get 'homes/top'
   end
 
-  namespace :user do
-    get 'user_pages/index'
-    get 'user_pages/show'
-    get 'user_pages/edit'
-
-  end
-  namespace :user do
-    get 'picts/new'
-    get 'picts/show'
-    get 'picts/index'
-    get 'picts/edit'
-  end
-  
-
-  namespace :admin do
-    get 'homes/top'
-  end
-
-  namespace :user do
-    get 'user_pages/index'
-    get 'user_pages/show'
-    get 'user_pages/edit'
-
-  end
-  namespace :user do
-    get 'picts/new'
-    get 'picts/show'
-    get 'picts/index'
-    get 'picts/edit'
-  end
-  namespace :user do
-    get 'novels/new'
-    get 'novels/show'
-    get 'novels/index'
-    get 'novels/edit'
-  end
-  
 end
