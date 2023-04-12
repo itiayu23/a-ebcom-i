@@ -12,7 +12,7 @@ class User::NovelsController < ApplicationController
     @novel_new.user_id = current_user.id
     if @novel_new.save
       flash[:notice] = "小説が投稿されました"
-      redirect_to novel_show(@novel_new.id)
+      redirect_to novel_path(@novel_new.id)
     else
       @user = current_user
       @novels = @user.novels

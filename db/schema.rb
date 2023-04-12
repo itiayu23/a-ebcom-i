@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(version: 2023_04_06_051549) do
   create_table "novels", force: :cascade do |t|
     t.integer "user_id"
     t.integer "tag_id"
-    t.string "title", null: false
-    t.text "text_body", null: false
+    t.string "title"
+    t.text "text_body"
     t.text "caption"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2023_04_06_051549) do
   create_table "picts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "tag_id"
-    t.string "title", null: false
+    t.string "title"
     t.text "caption"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

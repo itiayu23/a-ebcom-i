@@ -53,10 +53,10 @@
 
 
 <div class="comment_index">
-  <%= render 'book_comments/comment-index', book: @book %>
+  <%= render 'comments/comment-index', obj: @novel %>
 </div>
-<div class="book_comment_form">
-<%= render 'book_comments/form', book: @book, book_comment: @book_comment %>  
+<div class="comment_form">
+<%= render 'comments/form', obj: @novel, comment: @comment %>  
 </div>
 
 

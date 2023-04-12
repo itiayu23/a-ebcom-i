@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+ Rails.application.routes.draw do
 
   # namespace :admin do
   #   get 'homes/top'
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#follwers', as: 'follwers'
     end
     get 'user_pages/check'
-    resources :bookmarks, only: [:index]
+    # resources :bookmarks, only: [:index]
     resources :novels do
       resource :bookmarks, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
@@ -39,9 +39,27 @@ Rails.application.routes.draw do
     end
     
     resources :messages, only: [:create]
-    resources :rooms, only: [:create, :index, ]
+    resources :rooms, only: [:create, :index,]
 
   end
+
+  namespace :admin do
+    get 'homes/top'
+  end
+
+  namespace :user do
+    get 'user_pages/index'
+    get 'user_pages/show'
+    get 'user_pages/edit'
+
+  end
+  namespace :user do
+    get 'picts/new'
+    get 'picts/show'
+    get 'picts/index'
+    get 'picts/edit'
+  end
+  
 
   namespace :admin do
     get 'homes/top'
@@ -65,9 +83,5 @@ Rails.application.routes.draw do
     get 'novels/index'
     get 'novels/edit'
   end
-  namespace :user do
-
-  end
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
 end
