@@ -34,8 +34,8 @@
     end
 
     resources :picts do
-      resource :bookmarks, only: [:create, :destroy]
-      resources :comments, only: [:create, :destroy]
+      # resource :bookmarks, only: [:create, :destroy]
+      # resources :comments, only: [:create, :destroy]
     end
     
     resources :messages, only: [:create]

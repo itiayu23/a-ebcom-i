@@ -1,2 +1,2 @@
-$(".bookmarks_button_<%= @novel.id %>").html("<%= j(render 'bookmarks/bookmark-btn', obj: @novel) %>");
-$(".bookmarks_button_<%= @pict.id %>").html("<%= j(render 'bookmarks/bookmark-btn', obj: @pict) %>");
+$(".bookmarks_button_<%= @novel.id %>").html("<%= j(render 'user/bookmarks/bookmark-btn', novel: @novel) %>");
+<!--$(".bookmarks_button_<%#= @pict.id %>").html("<%#= j(render 'bookmarks/bookmark-btn', obj: @pict) %>");-->

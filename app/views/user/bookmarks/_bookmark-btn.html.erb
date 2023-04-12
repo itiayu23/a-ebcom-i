@@ -1,14 +1,14 @@
 <!--要確認-->
-        <% if obj.bookmarked_by?(current_user) %>
+        <% if novel.bookmarked_by?(current_user) %>
               <p>
-              <%= link_to bookmarks_path(obj), method: :delete, class: "text-danger", remote: true do %>
-              <i class="fa-solid fa-heart"></i><%= bookmarks.count %>
+              <%= link_to novel_bookmarks_path(novel), method: :delete, class: "text-danger", remote: true do %>
+              <i class="fa-solid fa-heart"></i><%= novel.bookmarks.count %>
               <% end %>
               </p>
             <% else %>
               <p>
-                <%= link_to bookmarks_path(obj), method: :post, remote: true do %>
-               <i class="fa-solid fa-heart"></i><%= bookmarks.count %>
+                <%= link_to novel_bookmarks_path(novel), method: :post, remote: true do %>
+               <i class="fa-solid fa-heart"></i><%= novel.bookmarks.count %>
               <% end %>
               </p>
             <% end %>

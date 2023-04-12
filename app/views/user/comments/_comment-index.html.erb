@@ -1,6 +1,6 @@
 <div>
   <!--要確認-->
-         <% obj.comments.each do |comment| %>
+         <% novel.comments.each do |comment| %>
                
                  <%= link_to user_page_path(comment.user.id) do %>
                      <%= image_tag comment.user.get_profile_image(100,100), class: "mt-3 rounded-circle"; %></br>
@@ -11,7 +11,7 @@
                  
                   <% if comment.user == current_user %>
                   
-                      <%= link_to comment_path(comment.pict,comment.novel, comment), method: :delete, class: "btn btn-sm btn-danger", remote: true do %>
+                      <%= link_to novel_comment_path(comment.novel, comment), method: :delete, class: "btn btn-sm btn-danger", remote: true do %>
                       Destroy<% end %>
                   <% end %>
                 

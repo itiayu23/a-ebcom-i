@@ -48,7 +48,7 @@ class User::NovelsController < ApplicationController
     @novel = Novel.find(params[:id])
     if @novel.update(novel_params)
       flash[:notice] = "小説が更新されました"
-      redirect_to novel_show_path(@novel.id)
+      redirect_to novel_path(@novel.id)
     else
       render :edit
     end
@@ -58,7 +58,7 @@ class User::NovelsController < ApplicationController
     novel = Novel.find(params[:id])
     novel.destroy
     # 自分のページのインデックスに飛ぶようにゆくゆくする
-    redirect_to novel_show_path
+    redirect_to novels_path
   end
 
 private
