@@ -23,7 +23,7 @@
           <%# end %>
   <!--      </td>-->
   
-      <td class="bookmarks_button_<%= @book.id %>">
+      <td class="bookmarks_button_<%= @novel.id %>">
         <%= render 'bookmarks/bookmark-btn', obj: @novel %>
       </td>
       
@@ -51,7 +51,7 @@
  </tbody>
 </table>
 
-<!--まだやっていない-->
+
 <div class="comment_index">
   <%= render 'book_comments/comment-index', book: @book %>
 </div>
