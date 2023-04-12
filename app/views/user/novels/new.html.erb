@@ -9,6 +9,12 @@
   <%= f.text_area :text_body, placeholder: "本文" %>
   <%= f.text_area :caption, placeholder: "小説の説明、あらすじなど" %>
   
+  <!--表紙アップロードにする。-->
+  <div class="form-group">
+    <%= f.label :image, "画像をアップロード" %>
+    <%= f.file_field :image, placeholder: "小説の表紙", accept: "image/*", class: "form-control-file" %>
+  </div>
+ 
   <%= f.submit '投稿' %>
 
 </table>

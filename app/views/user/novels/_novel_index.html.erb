@@ -1,0 +1,26 @@
+<% novels.each do |novel| %>
+<table class="table table-hover table-inverse">
+  
+  <tbody>
+    
+    <tr>
+      <td>
+        <%= link_to user_novels_show_path(novel.id) do %>
+        <%= image_tag novel.image, size: "100x100" %>
+        <% end %>
+      </td>
+      <td>
+        <!--投稿ユーザーのアイコンとリンク-->
+        <%= link_to user_user_pages_show_path(novel.user.id) do %>
+        <%= image_tag novel.user.get_profile_image(50,50) %><%= novel.user.nickname %>
+        <% end %>
+      </td>
+      <td>
+        <!--最初の1行30文字くらいで…を入れて見せないようにする。詳細ページで全部見れるようにする。-->
+        <%= novel.caption%>
+      </td>
+    </tr>
+    
+    
+  </tbody>
+</table>

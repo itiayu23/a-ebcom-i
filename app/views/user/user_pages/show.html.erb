@@ -1,6 +1,30 @@
 <h1>マイページ</h1>
 
 <div class="text-center">
-<%= user.nickname %>
-<%= user.profi%>
+  <%= image_tag @user.get_profile_image(100,100), class: "mt-3 rounded-circle" %>
+<%= @user.nickname %>
+
+
+
+<%= user.profile%>
+
+<% if user == current_user %>
+
+<%= link_to edit_user_page_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+<i class="fa-solid fa-pen-to-square"></i>
+<% end %>
+
+<% else %>
+
+  <% if current_user.following?(@user) %>
+  
+  <%= link_to "フォロー外す",user_page_relationships_path(@user_id), method: :delete, class: "btn btn-outline-secondary btn-block" %>
+  <% else %>
+  <%= link_to "フォローする", user_page_relationships_path(@user.id),  method: :post, class: "btn btn-outline-info btn-block" %>
+  <% end %>
+<% end %>
 </div>
+
+<h3>イラスト、マンガ</h3>
+
+<h3>小説</h3>

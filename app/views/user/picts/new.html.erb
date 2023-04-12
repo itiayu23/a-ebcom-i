@@ -1,2 +1,15 @@
-<h1>User::Picts#new</h1>
-<p>Find me in app/views/user/picts/new.html.erb</p>
+<h1>イラスト投稿ページ</h1>
+<%= form_with model: Pict.new do |f| %>
+
+<table class="table">
+  
+  <%= f.text_field :title, placeholder: "タイトル" %>
+  
+  <!--別ページにリロードなしで行けて個別に書ける、下書き保存が出来る-->
+  <%= f.file_field :images, multple: true, accept: "image/*" %>
+  <%= f.text_area :caption, placeholder: "イラストの説明、あらすじなど" %>
+  
+  <%= f.submit '投稿' %>
+
+</table>
+<% end %>

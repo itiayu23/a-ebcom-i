@@ -1,0 +1,21 @@
+<div>
+  <!--要確認-->
+         <% novel.comments.each do |comment| %>
+               
+                 <%= link_to user_page_path(comment.user.id) do %>
+                     <%= image_tag comment.user.get_profile_image(100,100), class: "mt-3 rounded-circle"; %></br>
+                     <%= comment.user.nickname %>
+                  <% end %>
+                  
+                  <%= comment.comment %>
+                 
+                  <% if comment.user == current_user %>
+                  
+                      <%= link_to novel_comment_path(comment.novel, comment), method: :delete, class: "btn btn-sm btn-danger", remote: true do %>
+                      Destroy<% end %>
+                  <% end %>
+                
+         <% end %>
+        </div>
+      
+        
