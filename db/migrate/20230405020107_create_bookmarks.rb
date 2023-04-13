@@ -3,7 +3,6 @@ class CreateBookmarks < ActiveRecord::Migration[6.1]
     create_table :bookmarks do |t|
       t.integer :user_id
       t.integer :novel_id
-      t.integer :pict_id
 
       t.timestamps
     end

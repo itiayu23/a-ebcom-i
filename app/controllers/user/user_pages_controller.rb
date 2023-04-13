@@ -4,11 +4,11 @@ class User::UserPagesController < ApplicationController
       @user = User.find(params[:id])
       @picts = @user.picts
       @novels = @user.novels
-      
+
     # DM用コントローラー
     # @current_entry = Entry.where(user_id: current_user.id)
     # @another_entry = Entry.where(user_id: @user.id)
-     
+
     #   unless @user.id == current_user.id
     #     @current_entry.each do |current|
     #       @another_entry.each do |another|
@@ -29,6 +29,7 @@ class User::UserPagesController < ApplicationController
 
   def index
       @users = User.all
+
       @pict = Pict.find(params[:id])
       @novel = Novel.find(params[:id])
   end
@@ -36,7 +37,7 @@ class User::UserPagesController < ApplicationController
   def edit
       @user = User.find(params[:id])
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -46,7 +47,7 @@ class User::UserPagesController < ApplicationController
       render :edit
     end
   end
-  
+
   def check
       @user = User.find(params[:id])
   end

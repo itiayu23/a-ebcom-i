@@ -1,8 +1,12 @@
 <div class="card-list-container py-5">
+      <%#= image_tag pict.image.variant(resize: '500x500') %>
+
+
   <% picts.each do |pict| %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <%= link_to pict_path(pict.id), class: "text-dark" do %>
-    <%= image_tag pict.get_image, class: "card-img-top"; %>
+    <%= image_tag pict.image.first.variant(resize: '500x500') %>
+    <%#= image_tag pict.get_image, class: "card-img-top"; %>
     <% end %>
     <div class="card-body">
       <div class="row">

@@ -31,7 +31,7 @@
     # resources :bookmarks, only: [:index]
     resources :novels do
       resource :bookmarks, only: [:create, :destroy]
-      resources :comments, only: [:create, :destroy]
+      resource :comments, only: [:create, :destroy]
     end
 
     resources :picts do

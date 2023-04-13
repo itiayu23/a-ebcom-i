@@ -1,17 +1,18 @@
 class User::PictsController < ApplicationController
   before_action :ensure_pict, only:[:edit, :update, :destroy]
-  
+
   def new
     @pict_new = Pict.new
   end
-  
+
   def create
      # 下書きを後で追加する
     @pict_new = Pict.new(pict_params)
     @pict_new.user_id = current_user.id
+
     if @pict_new.save
       flash[:notice] = "作品が投稿されました"
-      redirect_to pict_show(@pict_new.id)
+      redirect_to pict_path(@pict_new.id)
     else
       @user = current_user
       @picts = @user.picts
@@ -39,7 +40,7 @@ class User::PictsController < ApplicationController
   def edit
     @pict = Pict.find(params[:id])
   end
-  
+
   def update
   @pict = Pict.find(params[:id])
     if @pict.update(pict_params)
@@ -49,19 +50,19 @@ class User::PictsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     pict = Pict.find(params[:id])
     pict.destroy
     redirect_to picts_path
   end
-  
+
   private
-  
+
   def pict_params
     params.require(:pict).permit(:title, :caption, image: [])
   end
-  
+
   def ensure_pict
   @picts = current_user.picts
   @pict = @picts.find_by(id: params[:id])
@@ -69,6 +70,6 @@ class User::PictsController < ApplicationController
   redirect_to picts_path unless @pict
   # unlessだった場合自分のイラスト一覧に飛ぶ
   end
-  
-  
+
+
 end

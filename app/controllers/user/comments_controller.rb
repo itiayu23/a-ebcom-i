@@ -1,15 +1,13 @@
-class User::CommentController < ApplicationController
+class User::CommentsController < ApplicationController
 
   def create
     @novel = Novel.find(params[:novel_id])
-    @pict = Pict.find(params[:pict_id])
-    @comment = current_user.comment.new(novel_id: @novel.id, pict_id: @pict.id)
-    @comment.save
+    @comment = current_user.comments.new(novel_id: @novel.id, comment: comment_params[:comment])
+    @comment.save!
   end
 
   def destroy
     @novel = Novel.find(params[:novel_id])
-    @pict = Pict.find(params[:pict_id])
     Comment.find(params[:id]).destroy
   end
 
