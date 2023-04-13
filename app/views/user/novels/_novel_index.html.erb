@@ -5,13 +5,13 @@
     
     <tr>
       <td>
-        <%= link_to user_novels_show_path(novel.id) do %>
+        <%= link_to novel_path(novel.id) do %>
         <%= image_tag novel.image, size: "100x100" %>
         <% end %>
       </td>
       <td>
         <!--投稿ユーザーのアイコンとリンク-->
-        <%= link_to user_user_pages_show_path(novel.user.id) do %>
+        <%= link_to user_page_path(novel.user.id) do %>
         <%= image_tag novel.user.get_profile_image(50,50) %><%= novel.user.nickname %>
         <% end %>
       </td>
@@ -24,3 +24,4 @@
     
   </tbody>
 </table>
+<% end %>
