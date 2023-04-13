@@ -26,7 +26,8 @@
       # フォローされる
       get 'followers' => 'relationships#follwers', as: 'follwers'
     end
-    get 'user_pages/check'
+    get 'user/user_page/:id/check' => 'user_pages#check', as: 'check'
+    patch 'user/user_page/:id/withdraw' => 'user_pages#withdraw', as: 'withdraw'
     # resources :bookmarks, only: [:index]
     resources :novels do
       resource :bookmarks, only: [:create, :destroy]
@@ -37,7 +38,7 @@
       # resource :bookmarks, only: [:create, :destroy]
       # resources :comments, only: [:create, :destroy]
     end
-    
+
     resources :messages, only: [:create]
     resources :rooms, only: [:create, :index]
 
