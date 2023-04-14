@@ -40,14 +40,15 @@
 <i class="fa-solid fa-pen-to-square"></i>
 <% end %>
 </p>
-<%# else %>
+<% else %>
 
-  <%# if current_user.following?(@user) %>
+  <% if current_user.following?(@user) %>
 
-  <%#= link_to "フォロー外す",user_page_relationships_path(@user_id), method: :delete, class: "btn btn-outline-secondary btn-block" %>
-  <%# else %>
-  <%#= link_to "フォローする", user_page_relationships_path(@user.id),  method: :post, class: "btn btn-outline-info btn-block" %>
-  <%# end %>
+  <%= link_to "フォロー外す",user_page_relationships_path(@user_id), method: :delete, class: "btn btn-outline-secondary btn-block" %>
+  <% else %>
+  <%= link_to "フォローする", user_page_relationships_path(@user.id),  method: :post, class: "btn btn-outline-info btn-block" %>
+  <% end %>
+  
 <% end %>
 </div>
 
