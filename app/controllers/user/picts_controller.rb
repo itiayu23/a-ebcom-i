@@ -22,7 +22,7 @@ class User::PictsController < ApplicationController
 
   def show
     @pict = Pict.find(params[:id])
-    @comment = Comment.new
+    @pict_comment = PictComment.new
     @user = @pict.user
     current_user.read_counts.create(pict_id: @pict.id)
   end
