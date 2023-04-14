@@ -1,11 +1,11 @@
 class User::PictBookmarksController < ApplicationController
    before_action :set_user, only: [:index]
 
-  def index
-    bookmarks = Bookmark.where(user_id: @user.id).pluck(:pict_id)
-    @bookmark_picts = Pict.find(bookmarks)
-    # @bookmark_picts = Pict.find(bookmarks)
-  end
+  # def index
+  #   bookmarks = Bookmark.where(user_id: @user.id).pluck(:pict_id)
+  #   @bookmark_picts = Pict.find(bookmarks)
+  #   # @bookmark_picts = Pict.find(bookmarks)
+  # end
 
   def create
     @pict = Pict.find(params[:pict_id])

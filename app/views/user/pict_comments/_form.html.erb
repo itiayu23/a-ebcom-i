@@ -1,5 +1,5 @@
  <div class="form-group">
-        <%= form_with model: [pict, comment], local: false do |f| %>
+        <%= form_with model: [pict, pict_comment], local: false do |f| %>
             <%= f.text_area :comment, placeholder: "コメントをここに", class: "form-control" %>
             <%= f.submit "送信" %>
         <% end %>

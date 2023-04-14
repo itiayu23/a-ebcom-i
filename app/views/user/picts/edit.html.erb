@@ -1,2 +1,20 @@
-<h1>User::Picts#edit</h1>
-<p>Find me in app/views/user/picts/edit.html.erb</p>
+<h1>イラストマンガ編集画面</h1>
+<%= form_with model: @pict do |f| %>
+
+<table class="table">
+
+  <%= f.text_field :title, placeholder: "タイトル" %>
+
+  <!--別ページにリロードなしで行けて個別に書ける、下書き保存が出来る-->
+  <div class="field">
+  <%= f.label :image %>
+  <%= f.file_field :image, multiple: true %>
+  </div>
+
+  <%= f.text_area :caption, placeholder: "イラストの説明、あらすじなど" %>
+
+  <%= f.submit '投稿' %>
+
+</table>
+<% end %>
+

@@ -23,7 +23,7 @@
             <!--いいねをここに入れる-->
           </p>
           <p class="card-text">説明：<%= pict.caption %></p>
-          <span><%= link_to "#{pict.comments.count} コメント", pict_path(pict.id), class: "text-dark" %></span>
+          <span><%= link_to "#{pict.pict_comments.count} コメント", pict_path(pict.id), class: "text-dark" %></span>
         </div>
       </div>
     </div>

@@ -1,2 +1,39 @@
 <h1>User::Picts#show</h1>
-<p>Find me in app/views/user/picts/show.html.erb</p>
+
+<div class="text-center">
+  <p><%= @pict.title %></p>
+  <p><%= image_tag @pict.image.first.variant(resize: '500X500') %></p>
+  <P><%= @pict.caption %></P>
+</div>
+<div class="text-right">
+  <div class="pict_bookmarks_button_<%= @pict.id %>">
+    <%= render 'user/pict_bookmarks/bookmark-btn', pict: @pict %>
+  </div>
+    <p>コメント数:<%= @pict.pict_comments.count %></p>
+
+    <p><%= link_to user_page_path(@pict.user.id) do %>
+       <%= image_tag @pict.user.get_profile_image(100,100), class: "mt-3 rounded-circle"; %></p>
+    <p><%= @pict.user.nickname %></p>
+    <% end %>
+    
+    <% if @pict.user == current_user %>
+    <P><%= link_to edit_pict_path(@pict.id), class: "text-success" do %>
+          <i class="fa-solid fa-pen-to-square"></i><% end %></P>
+          
+    <P><%= link_to pict_path(@pict.id), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-danger" do %>
+          <i class="fa-solid fa-trash-can"></i><% end %></P>
+    <% else %>
+    <p></p>
+    <p></p>
+    <% end %>
+    
+</div>
+    
+    
+  <div class="comment_index">
+  <%= render 'user/pict_comments/comment-index', pict: @pict %>
+  </div>
+  <div class="comment_form">
+  <%= render 'user/pict_comments/form', pict: @pict, pict_comment: @pict_comment %>  
+  </div>
+    
