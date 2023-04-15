@@ -2,13 +2,13 @@ class User::UserPagesController < ApplicationController
 
   def show
       @user = User.find(params[:id])
-      @pict = Pict.find(params[:id])
-      @novel = Novel.find(params[:id])
-      
+      @picts = @user.picts
+      @novels = @user.novels
+
     # DM用コントローラー
     @current_entry = Entry.where(user_id: current_user.id)
     @another_entry = Entry.where(user_id: @user.id)
-     
+
       unless @user.id == current_user.id
         @current_entry.each do |current|
           @another_entry.each do |another|
@@ -29,6 +29,7 @@ class User::UserPagesController < ApplicationController
 
   def index
       @users = User.all
+
       @pict = Pict.find(params[:id])
       @novel = Novel.find(params[:id])
   end
@@ -36,7 +37,7 @@ class User::UserPagesController < ApplicationController
   def edit
       @user = User.find(params[:id])
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -46,9 +47,9 @@ class User::UserPagesController < ApplicationController
       render :edit
     end
   end
-  
+
   def check
-      @user = current_user
+      @user = User.find(params[:id])
   end
 
   def withdraw
@@ -62,7 +63,7 @@ class User::UserPagesController < ApplicationController
 private
 
 def user_params
-  params.require(:user).permit(:nickname, :profile_image, :name, :birthday, :profile, :contact)
+  params.require(:user).permit(:nickname, :profile_image, :name, :birthday, :profile, :contact, :twitter, :facebook, :instagram)
 end
 
 def is_matching_login_user
@@ -72,10 +73,5 @@ def is_matching_login_user
   end
 
 end
-
-
-
-
-
 
 end

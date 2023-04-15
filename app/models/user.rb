@@ -7,8 +7,8 @@ class User < ApplicationRecord
          has_many :novels, dependent: :destroy
          has_many :picts, dependent: :destroy
          has_one_attached :profile_image
-         has_many :bookmarks, dependent: :destroy
-         has_many :comments, dependent: :destroy
+         has_many :pict_bookmarks, dependent: :destroy
+         has_many :pict_comments, dependent: :destroy
 
 
         # 閲覧数
@@ -16,15 +16,15 @@ class User < ApplicationRecord
 
         # フォローフォロワー
         has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-        has_many :reverse_of_relationships, class_name: "Relationship", dependent: :destroy
+        has_many :reverse_of_relationships, class_name: "Relationship",foreign_key: "followed_id", dependent: :destroy
 
         # 一覧画面で使う
         has_many :followings, through: :relationships, source: :followed
         has_many :followers, through: :reverse_of_relationships, source: :follower
 
         # DMは後で実装
-        # has_many :entries, dependent: :destroy
-        # has_many :messages, dependent: :destroy
+        has_many :entries, dependent: :destroy
+        has_many :messages, dependent: :destroy
 
         # プロフィール画像何もないときのやつ
     def get_profile_image(width, height)
@@ -37,7 +37,7 @@ class User < ApplicationRecord
 
     # フォローした時の処理
     def follow(user_id)
-      relationships.create(followed_id: user_id)
+      relationships.create!(followed_id: user_id)
     end
     # フォロー外すときの処理
     def unfollow(user_id)
@@ -76,9 +76,5 @@ class User < ApplicationRecord
               @user = User.all
       end
     end
-
-
-
-
 
 end

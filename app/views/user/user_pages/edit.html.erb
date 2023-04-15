@@ -1,2 +1,80 @@
-<h1>User::UserPages#edit</h1>
-<p>Find me in app/views/user/user_pages/edit.html.erb</p>
+<h2>マイページ編集</h2>
+
+<%= form_with model: @user, url: user_page_path(current_user) do |f| %>
+
+<table class="table">
+
+ <tbody>
+
+
+    
+    <tr>
+        <div class="form-group">
+          <label for="inputImage">プロフィール画像</label>
+          <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: "form-control-file" %>
+        </div>
+    </tr>
+     
+     
+     
+     <tr>
+      <div class="field">
+         <th><%= f.label :ニックネーム %></th>
+         <th><%= f.text_field :nickname, class: "form-control", autofocus: true %></th>
+      </div>
+     </tr>
+
+    <tr>
+      <div class="field">
+        <th><%= f.label :プロフィール文 %></th>
+        <th><%=  f.text_area :plofile, class: "form-control" %></th>
+      </div>
+    </tr>
+
+
+      <div class = "sns-link">
+
+            <tr>
+              <div class="form-group">
+
+                  <th><%= f.label :twitter, 'Twitter URL' %></th>
+                  <th><%= f.text_field :twitter, placeholder: "URL", class: "form-control" %></th>
+
+              </div>
+            </tr>
+
+              <tr>
+              <div class="form-group">
+                <th><%= f.label :facebook, 'Facebook URL' %></th>
+                <th><%= f.text_field :facebook, placeholder: "URL", class: "form-control" %></th>
+              </div>
+              </tr>
+
+              <tr>
+              <div class="form-group">
+                <th><%= f.label :instagram, 'Instagram URL' %></th>
+                <th><%= f.text_field :instagram, placeholder: "URL", class: "form-control" %></th>
+              </div>
+              </tr>
+      </div>
+
+    </tr>
+
+    <tr>
+      <div class="field">
+       <th><%= f.label :メールアドレス %></th>
+       <th><%= f.email_field :email, autocomplete: "email", class: "form-control" %></th>
+      </div>
+    </tr>
+
+     <tr>
+       <th><%= f.submit '編集内容を保存する', class: "btn btn-success" %></th>
+       <th><%= link_to '退会する', check_path, class: "btn btn-danger" %></th>
+     </tr>
+
+
+ </tbody>
+
+</table>
+
+<% end %>

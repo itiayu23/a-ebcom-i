@@ -1,13 +1,5 @@
  Rails.application.routes.draw do
 
-  # namespace :admin do
-  #   get 'homes/top'
-  #   get 'homes/about'
-  # end
-  # namespace :user do
-  #   get 'homes/top'
-  #   get 'homes/about'
-  # end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
      sessions: "admin/sessions"
   }
@@ -26,20 +18,21 @@
       # フォローされる
       get 'followers' => 'relationships#follwers', as: 'follwers'
     end
-    get 'user_pages/check'
+    get 'user/user_page/:id/check' => 'user_pages#check', as: 'check'
+    patch 'user/user_page/:id/withdraw' => 'user_pages#withdraw', as: 'withdraw'
     # resources :bookmarks, only: [:index]
     resources :novels do
       resource :bookmarks, only: [:create, :destroy]
-      resources :comments, only: [:create, :destroy]
+      resource :comments, only: [:create, :destroy]
     end
 
     resources :picts do
-      # resource :bookmarks, only: [:create, :destroy]
-      # resources :comments, only: [:create, :destroy]
+      resource :pict_bookmarks, only: [:create, :destroy]
+      resources :pict_comments, only: [:create, :destroy]
     end
-    
+
     resources :messages, only: [:create]
-    resources :rooms, only: [:create, :index]
+    resources :rooms, only: [:create, :index, :show]
 
   end
 

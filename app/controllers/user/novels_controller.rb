@@ -1,11 +1,11 @@
 class User::NovelsController < ApplicationController
   # 自分以外の人が他人の小説を編集させないようにするコード
   before_action :ensure_novel, only:[:edit, :update, :destroy]
-  
+
   def new
     @novel_new = Novel.new
   end
-  
+
   def create
     # 下書きを後で追加する
     @novel_new = Novel.new(novel_params)
@@ -18,7 +18,7 @@ class User::NovelsController < ApplicationController
       @novels = @user.novels
       render :show
     end
-      
+
   end
 
   def show
@@ -27,7 +27,7 @@ class User::NovelsController < ApplicationController
     @user = @novel.user
     # 閲覧数を新しく作成し、小説ID、ユーザーをcurrent_user = つまり自分のIDを入力
     current_user.read_counts.create(novel_id: @novel.id)
-    
+
   end
 
   def index
@@ -43,7 +43,7 @@ class User::NovelsController < ApplicationController
   def edit
     @novel = Novel.find(params[:id])
   end
-  
+
   def update
     @novel = Novel.find(params[:id])
     if @novel.update(novel_params)
@@ -53,7 +53,7 @@ class User::NovelsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     novel = Novel.find(params[:id])
     novel.destroy
@@ -75,5 +75,5 @@ def ensure_novel
   # unlessだった場合自分の小説一覧に飛ぶ
 end
 
-  
+
 end

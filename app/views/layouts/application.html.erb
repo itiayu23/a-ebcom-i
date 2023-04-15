@@ -25,59 +25,87 @@
             <% if user_signed_in? %>
             <!--ユーザーがサインインしていたら遷移できるページ-->
             <li class="nav-item">
-              
+              <%= link_to user_page_path(current_user.id), class: 'nav-link text-success' do %>
+              <i class="fa-solid fa-user"></i> マイページ
+              <% end %>
             </li>
             <li class="nav-item">
               <%= link_to new_novel_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-shield-exclamation"></i> 小説投稿
+              <i class="fa-solid fa-user"></i> 小説投稿
               <% end %>
             </li>
-            
+
             <li class="nav-item">
               <%= link_to new_pict_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-shield-exclamation"></i> イラスト・漫画投稿
+              <i class="fa-solid fa-user"></i> イラスト・漫画投稿
               <% end %>
             </li>
-            
-            
-            
+
+            <li class="nav-item">
+              <%= link_to picts_path, class: 'nav-link text-success' do %>
+              <i class="fa-solid fa-pen-nib"></i> みんなのイラスト・漫画
+              <% end %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to novels_path, class: 'nav-link text-success' do %>
+              <i class="fa-solid fa-pen-nib"></i> みんなの小説
+              <% end %>
+            </li>
+
             <li class="nav-item">
               <%= link_to destroy_user_session_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-shield-exclamation"></i>会員 Log Out
+              <i class="fa-solid fa-user"></i>会員 Log Out
               <% end %>
             </li>
             <% elsif admin_signed_in? %>
             <!--管理者がログインしている場合-->
             <li class="nav-item">
               <%= link_to destroy_admin_session_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-shield-exclamation"></i>管理人 Log Out
+              <i class="fa-solid fa-shield-halved"></i>管理人 Log Out
               <% end %>
             </li>
             <% else %>
             <!--ログインしていない状態-->
-            
+
+            <li class="nav-item">
+              <%= link_to picts_path, class: 'nav-link text-success' do %>
+              <i class="fa-solid fa-pen-nib"></i> みんなのイラスト・漫画
+              <% end %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to novels_path, class: 'nav-link text-success' do %>
+              <i class="fa-solid fa-pen-nib"></i> みんなの小説
+              <% end %>
+            </li>
+
             <li class="nav-item">
               <%= link_to homes_about_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-shield-exclamation"></i> About
+              <i class="fa-solid fa-pen-nib"></i> About
               <% end %>
             </li>
-            
+
             <li class="nav-item">
               <%= link_to new_user_registration_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-shield-exclamation"></i> 新規登録
+              <i class="fa-solid fa-pen-nib"></i> 新規登録
               <% end %>
             </li>
-            
+
             <li class="nav-item">
               <%= link_to new_user_session_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-shield-exclamation"></i> Log In
+              <i class="fa-solid fa-pen-nib"></i> Log In
               <% end %>
             </li>
             <% end %>
         </div>
       </nav>
     </header>
-    
+    <div>
+      <%= flash[:notice] %>
+    </div>
+    <main>
     <%= yield %>
+    </main>
   </body>
 </html>

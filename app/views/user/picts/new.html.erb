@@ -2,13 +2,17 @@
 <%= form_with model: Pict.new do |f| %>
 
 <table class="table">
-  
+
   <%= f.text_field :title, placeholder: "タイトル" %>
-  
+
   <!--別ページにリロードなしで行けて個別に書ける、下書き保存が出来る-->
-  <%= f.file_field :images, multple: true, accept: "image/*" %>
+  <div class="field">
+  <%= f.label :image %>
+  <%= f.file_field :image, multiple: true %>
+  </div>
+
   <%= f.text_area :caption, placeholder: "イラストの説明、あらすじなど" %>
-  
+
   <%= f.submit '投稿' %>
 
 </table>

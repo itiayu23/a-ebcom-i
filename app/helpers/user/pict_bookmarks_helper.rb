@@ -1,0 +1,2 @@
+module User::PictBookmarksHelper
+end
