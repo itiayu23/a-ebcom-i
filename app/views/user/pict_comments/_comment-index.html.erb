@@ -11,7 +11,7 @@
                  
                   <% if comment.user == current_user %>
                   
-                      <%= link_to novel_comments_path(comment.novel, comment), method: :delete, class: "btn btn-sm btn-danger", remote: true do %>
+                      <%= link_to pict_pict_comment_path(pict_id: comment.pict, id: comment.id), method: :delete, class: "btn btn-sm btn-danger", remote: true do %>
                       Destroy<% end %>
                   <% end %>
                 

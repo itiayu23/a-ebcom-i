@@ -14,6 +14,6 @@ class User::PictCommentsController < ApplicationController
   private
 
   def pict_comment_params
-    params.require(:comment).permit(:comment)
+    params.require(:pict_comment).permit(:comment)
   end
 end

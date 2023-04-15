@@ -1,14 +1,14 @@
 class User::RelationshipsController < ApplicationController
      # フォローするとき
   def create
-    current_user.follow(params[:user_id])
+    current_user.follow(params[:user_page_id])
     redirect_to request.referer
   end
   
   
   # フォロー外すとき
   def destroy
-    current_user.unfollow(params[:user_id])
+    current_user.unfollow(params[:user_page_id])
     redirect_to request.referer
   end
   

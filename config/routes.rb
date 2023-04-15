@@ -1,13 +1,5 @@
  Rails.application.routes.draw do
 
-  # namespace :admin do
-  #   get 'homes/top'
-  #   get 'homes/about'
-  # end
-  # namespace :user do
-  #   get 'homes/top'
-  #   get 'homes/about'
-  # end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
      sessions: "admin/sessions"
   }
@@ -40,7 +32,7 @@
     end
 
     resources :messages, only: [:create]
-    resources :rooms, only: [:create, :index]
+    resources :rooms, only: [:create, :index, :show]
 
   end
 
