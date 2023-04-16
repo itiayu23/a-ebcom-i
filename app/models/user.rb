@@ -9,6 +9,8 @@ class User < ApplicationRecord
          has_one_attached :profile_image
          has_many :pict_bookmarks, dependent: :destroy
          has_many :pict_comments, dependent: :destroy
+         has_many :bookmarks, dependent: :destroy
+         has_many :comments, dependent: :destroy
 
 
         # 閲覧数

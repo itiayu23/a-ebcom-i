@@ -1,8 +1,37 @@
+
 <h1>User::Picts#show</h1>
 
 <div class="text-center">
   <p><%= @pict.title %></p>
-  <p><%= image_tag @pict.image.first.variant(resize: '500X500') %></p>
+  
+  <!--スライダー箇所全体を内包する要素-->
+  <div class="swiper">
+    
+    <!--スライド部を内包する要素-->
+    <div class="swiper-wrapper">
+      <!--スワイパーで表示、イーチでとうこうされたものを表示させる-->
+      <!--各スライドを入れる要素-->
+      <% @pict.image.each do |image| %>
+      <div class="swiper-slide">
+        <!--画像-->
+        <%= image_tag image.variant(resize: '500X500') %>
+      </div>
+      <% end %>
+      
+    </div>
+    
+    <!--ページネーションの要素-->
+    <div class="swiper-pagination"></div>
+    
+    <!--ナビゲーションボタン（前、次）-->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    
+    
+    <!--<div class="swiper-scrollbar"></div>-->
+    
+  </div>
+  </p>
   <P><%= @pict.caption %></P>
 </div>
 <div class="text-right">
@@ -36,4 +65,23 @@
   <div class="comment_form">
   <%= render 'user/pict_comments/form', pict: @pict, pict_comment: @pict_comment %>  
   </div>
-    
+  
+  
+    <script>
+      const swiper = new Swiper('.swiper', {
+  //オプションの設定
+  loop: true, //最後までスライドしたら最初の画像に戻る
+ 
+  //ページネーション表示の設定
+  pagination: { 
+    el: '.swiper-pagination', //ページネーションの要素
+  },
+ 
+  //ナビゲーションボタン（矢印）表示の設定
+  navigation: { 
+    nextEl: '.swiper-button-next', //「次へボタン」要素の指定
+    prevEl: '.swiper-button-prev', //「前へボタン」要素の指定
+  }
+});
+      
+    </script>
