@@ -1,6 +1,10 @@
  Rails.application.routes.draw do
 
   namespace :admin do
+    get 'contacts/index'
+    get 'contacts/show'
+  end
+  namespace :admin do
     get 'user_pages/index'
     get 'user_pages/show'
     get 'user_pages/edit'
@@ -16,12 +20,12 @@
   scope module: :user do
     root to: 'homes#top'
     get 'homes/about'
-    
+
     resources :contacts, only: [:new, :create]
     post 'contacts/confilm', to: 'contacts#confilm', as: 'confilm'
     post 'contacts/back', to: 'contacts#back', as: 'back'
     get 'done', to: 'contacts#done', as: 'done'
-    
+
     resources :user_pages, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       # フォローする
