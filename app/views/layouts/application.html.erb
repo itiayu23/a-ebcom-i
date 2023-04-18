@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-     
+
     <title>AEbcomI</title>
-    
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,10 +11,11 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    
+    <script src="https://kit.fontawesome.com/5bd8084eaa.js" crossorigin="anonymous"></script>
+
   </head>
 
   <body class="d-flex flex-column vh-100">
@@ -64,13 +65,13 @@
               <i class="fa-solid fa-user"></i>会員 Log Out
               <% end %>
             </li>
-            
+
             <li class="nav-item">
               <%= link_to new_contact_path, class: 'nav-link text-success' do %>
               <i class="fa-regular fa-envelope"></i> お問い合わせ
               <% end %>
             </li>
-            
+
             <% elsif admin_signed_in? %>
             <!--管理者がログインしている場合-->
             <li class="nav-item">
@@ -110,7 +111,7 @@
               <i class="fa-solid fa-pen-nib"></i> Log In
               <% end %>
             </li>
-            
+
             <li class="nav-item">
               <%= link_to new_contact_path, class: 'nav-link text-success' do %>
               <i class="fa-regular fa-envelope"></i> お問い合わせ

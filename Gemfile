@@ -59,6 +59,7 @@ gem 'social-share-button'
 gem 'rinku'
 gem 'rails-i18n'
 gem 'enum_help'
+gem 'kaminari'
 
 
 gem 'dotenv-rails'
