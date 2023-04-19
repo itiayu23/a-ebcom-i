@@ -1,1 +1,19 @@
-<h1>Admin::Contacts#show</h1>
+<h1><%= @contact.nickname %>さんからのメール</h1>
+<table class="table">
+  <tbody>
+
+    <tr>
+      <td><%= @contact.name%></td>
+    </tr>
+    
+    <tr>
+      <td><%= @contact.nickname%></td>
+    </tr>
+
+    <tr>
+      <td><%= @contact.message %></td>
+    </tr>
+
+  </tbody>
+</table>
+

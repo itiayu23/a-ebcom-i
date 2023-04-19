@@ -1,13 +1,15 @@
  Rails.application.routes.draw do
 
   namespace :admin do
-    get 'contacts/index'
-    get 'contacts/show'
+    # get 'contacts/index'
+    # get 'contacts/show'
+    resources :contacts, only: [:index, :show]
   end
   namespace :admin do
-    get 'user_pages/index'
-    get 'user_pages/show'
-    get 'user_pages/edit'
+    # get 'user_pages/index'
+    # get 'user_pages/show'
+    # get 'user_pages/edit'
+    resources :user_pages, only: [:index, :show, :edit, :update]
   end
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
      sessions: "admin/sessions"

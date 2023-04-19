@@ -6,7 +6,7 @@ class Admin::UserPagesController < ApplicationController
   end
 
   def show
-    @users = User.all
+    # @users = User.all
     @user = User.find(params[:id])
   end
 

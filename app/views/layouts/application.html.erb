@@ -75,13 +75,13 @@
             <% elsif admin_signed_in? %>
             <!--管理者がログインしている場合-->
             <li class="nav-item">
-              <%= link_to admin_user_pages_index_path, class: 'nav-link text-success' do %>
+              <%= link_to admin_user_pages_path, class: 'nav-link text-success' do %>
               <i class="fa-solid fa-shield-halved"></i>管理人 ユーザー一覧
               <% end %>
             </li>
             
             <li class="nav-item">
-              <%= link_to admin_contacts_index_path, class: 'nav-link text-success' do %>
+              <%= link_to admin_contacts_path, class: 'nav-link text-success' do %>
               <i class="fa-solid fa-shield-halved"></i>管理人 お問い合わせ受付ページ
               <% end %>
             </li>
