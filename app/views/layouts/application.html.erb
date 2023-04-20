@@ -31,6 +31,11 @@
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
             <!--ユーザーがサインインしていたら遷移できるページ-->
+            <% if current_user.check == "使用可" %>
+            <P>ようこそ！</P>
+            <% else %>
+            <p>warning</p>
+            <% end %>
             <li class="nav-item">
               <%= link_to user_page_path(current_user.id), class: 'nav-link text-success' do %>
               <i class="fa-solid fa-user"></i> マイページ

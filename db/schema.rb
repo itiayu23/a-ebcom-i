@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_18_023955) do
+ActiveRecord::Schema.define(version: 2023_04_20_111754) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 2023_04_18_023955) do
     t.string "title"
     t.text "text_body"
     t.text "caption"
+    t.string "privacy"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -143,6 +144,7 @@ ActiveRecord::Schema.define(version: 2023_04_18_023955) do
     t.integer "tag_id"
     t.string "title"
     t.text "caption"
+    t.string "privacy"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -192,6 +194,7 @@ ActiveRecord::Schema.define(version: 2023_04_18_023955) do
     t.string "twitter"
     t.string "facebook"
     t.string "instagram"
+    t.integer "check", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

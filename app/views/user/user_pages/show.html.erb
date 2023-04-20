@@ -1,9 +1,11 @@
+
+
 <h1><%= @user.nickname %>さんのページ</h1>
 
 <div class="text-right">
   
-  <% unless @user.id == current_user.id %>
-<% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
+  <%# unless @user.id == current_user.id %>
+<% if user_signed_in? && current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
 <% if @is_room == true %>
 
  <p class="user-show-room"><a href="/rooms/<%= @room_id %>" class="btn btn-primary btn-lg">チャットへ</a>
@@ -17,7 +19,7 @@
      <% end %>
    <% end %>
 <% end %>
-<% end %>
+<%# end %>
   
 </div>
 
@@ -63,7 +65,7 @@
 </p>
 <% else %>
 
-  <% if current_user.following?(@user) %>
+  <% if user_signed_in? && current_user.following?(@user) %>
 
   <%= link_to "フォロー外す",user_page_relationships_path(@user.id), method: :delete, class: "btn btn-outline-secondary btn-block" %>
   <% else %>

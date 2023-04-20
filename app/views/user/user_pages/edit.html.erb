@@ -7,16 +7,16 @@
  <tbody>
 
 
-    
+
     <tr>
         <div class="form-group">
           <label for="inputImage">プロフィール画像</label>
           <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: "form-control-file" %>
         </div>
     </tr>
-     
-     
-     
+
+
+
      <tr>
       <div class="field">
          <th><%= f.label :ニックネーム %></th>
@@ -66,12 +66,10 @@
        <th><%= f.email_field :email, autocomplete: "email", class: "form-control" %></th>
       </div>
     </tr>
-
-     <tr>
+      <tr>
        <th><%= f.submit '編集内容を保存する', class: "btn btn-success" %></th>
        <th><%= link_to '退会する', check_path, class: "btn btn-danger" %></th>
      </tr>
-
 
  </tbody>
 

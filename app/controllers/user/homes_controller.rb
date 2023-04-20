@@ -4,4 +4,8 @@ class User::HomesController < ApplicationController
 
   def about
   end
+
+  def warning
+  end
+
 end

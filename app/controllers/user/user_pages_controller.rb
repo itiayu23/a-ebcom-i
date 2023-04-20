@@ -2,11 +2,20 @@ class User::UserPagesController < ApplicationController
 
   def show
       @user = User.find(params[:id])
-      @picts = @user.picts
-      @novels = @user.novels
-
+      
+      
+      
+      if @user == current_user
+        @picts = @user.picts
+        @novels = @user.novels
+      else
+        @novels = @user.novels.where(privacy: "1")
+        @picts = @user.picts.where(privacy: "1")
+      end
+     
     # DM用コントローラー
     # ゲストユーザーがユーザーページを見れるようにする
+     if user_signed_in? && current_user != @user && current_user.following?(@user) && @user.following?(current_user) 
     @current_entry = Entry.where(user_id: current_user.id)
     @another_entry = Entry.where(user_id: @user.id)
 
@@ -25,6 +34,7 @@ class User::UserPagesController < ApplicationController
           @entry = Entry.new
         end
       end
+     end
       # ここまでDM
   end
 

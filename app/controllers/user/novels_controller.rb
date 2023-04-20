@@ -26,17 +26,19 @@ class User::NovelsController < ApplicationController
     @comment = Comment.new
     @user = @novel.user
     # 閲覧数を新しく作成し、小説ID、ユーザーをcurrent_user = つまり自分のIDを入力
+    if user_signed_in?
     current_user.read_counts.create(novel_id: @novel.id)
+    end
 
   end
 
   def index
     if params[:latest]
-      @novels = Novel.latest
+      @novels = Novel.latest.where(privacy: "1")
     elsif params[:old]
-      @novels = Novel.old
+      @novels = Novel.old.where(privacy: "1")
     else
-      @novels = Novel.all
+      @novels = Novel.where(privacy: "1")
     end
   end
 
@@ -64,7 +66,7 @@ class User::NovelsController < ApplicationController
 private
 
 def novel_params
-  params.require(:novel).permit(:title, :text_body, :image, :caption)
+  params.require(:novel).permit(:title, :text_body, :image, :caption, :privacy)
 end
 
 def ensure_novel

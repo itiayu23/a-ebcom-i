@@ -6,6 +6,7 @@ class CreateNovels < ActiveRecord::Migration[6.1]
       t.string :title
       t.text :text_body
       t.text :caption
+      t.string :privacy
 
       t.timestamps
     end

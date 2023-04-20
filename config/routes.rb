@@ -22,6 +22,7 @@
   scope module: :user do
     root to: 'homes#top'
     get 'homes/about'
+    get 'homes/warning'
 
     resources :contacts, only: [:new, :create]
     post 'contacts/confilm', to: 'contacts#confilm', as: 'confilm'

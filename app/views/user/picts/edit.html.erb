@@ -12,6 +12,10 @@
   </div>
 
   <%= f.text_area :caption, placeholder: "イラストの説明、あらすじなど" %>
+  
+    <div class="form-group">
+    <%= f.select :privacy, [["公開",1],["非公開",2]], include_blank: "選択してください" %>
+  </div>
 
   <%= f.submit '投稿' %>
 

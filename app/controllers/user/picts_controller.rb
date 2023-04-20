@@ -24,16 +24,19 @@ class User::PictsController < ApplicationController
     @pict = Pict.find(params[:id])
     @pict_comment = PictComment.new
     @user = @pict.user
-    current_user.read_counts.create(pict_id: @pict.id)
+
+   if user_signed_in?
+     current_user.read_counts.create(pict_id: @pict.id)
+   end
   end
 
   def index
     if params[:latest]
-      @picts = Pict.latest
+      @picts = Pict.where(privacy: "1").latest
     elsif params[:old]
-      @picts = Pict.old
+      @picts = Pict.old.where(privacy: "1")
     else
-      @picts = Pict.all
+      @picts = Pict.where(privacy: "1")
     end
   end
 
@@ -60,7 +63,7 @@ class User::PictsController < ApplicationController
   private
 
   def pict_params
-    params.require(:pict).permit(:title, :caption, image: [])
+    params.require(:pict).permit(:title, :caption, :privacy, image: [])
   end
 
   def ensure_pict

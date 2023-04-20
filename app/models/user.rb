@@ -27,6 +27,11 @@ class User < ApplicationRecord
         # DMは後で実装
         has_many :entries, dependent: :destroy
         has_many :messages, dependent: :destroy
+        
+        # 後でマイグレーションする。管理者側で変えられるようにする（使用者側は見るだけ）
+        enum check: {使用可: 0, 注意喚起: 1}
+        
+        
 
         # プロフィール画像何もないときのやつ
     def get_profile_image(width, height)

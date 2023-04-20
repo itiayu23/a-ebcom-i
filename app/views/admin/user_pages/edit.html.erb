@@ -1,2 +1,65 @@
 <h1>Admin::UserPages#edit</h1>
-<p>Find me in app/views/admin/user_pages/edit.html.erb</p>
+ <%= form_with model: @user,url:admin_user_page_path do |f| %>
+ 
+ <table>
+      <tbody>
+     
+     <tr>
+      <div class="field">
+         <th><%= f.label :名前 %></th>
+         <th><%= f.text_field :name, class: "form-control", autofocus: true %></th>
+      </div>
+     </tr>
+     
+     <tr>
+      <div class="field">
+         <th><%= f.label :ニックネーム %></th>
+         <th><%= f.text_field :nickname, class: "form-control", autofocus: true %></th>
+      </div>
+     </tr>
+
+    <tr>
+      <div class="field">
+        <th><%= f.label :プロフィール文 %></th>
+        <th><%=  f.text_area :plofile, class: "form-control" %></th>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="field">
+       <th><%= f.label :メールアドレス %></th>
+       <th><%= f.email_field :email, autocomplete: "email", class: "form-control" %></th>
+      </div>
+    </tr>
+    <tr>
+      <td>
+        
+        <%= f.select :check, [["使用可",0],["注意喚起",1]], include_blank: "選択してください" %>
+        
+      </td>
+    </tr>
+     <tr>
+              <td class="pr-5 py-3">会員ステータス</td>
+              <td>
+                <% if @user.is_delete == false %>
+                  <%= f.radio_button :is_delete, :false, checked: true %>
+                   有効
+                  <%= f.radio_button :is_delete, :true, class: 'ml-3' %>
+                   退会
+                <% else %>
+                  <%= f.radio_button :is_delete, :false %>
+                   有効
+                  <%= f.radio_button :is_delete, :true, checked: true, class: 'ml-3' %>
+                   退会
+                <% end %>
+              </td>
+            </tr>
+
+     <tr>
+       <th><%= f.submit '編集内容を保存する', class: "btn btn-success" %></th>
+     </tr>
+
+
+ </tbody>
+ </table>
+ <% end %>
