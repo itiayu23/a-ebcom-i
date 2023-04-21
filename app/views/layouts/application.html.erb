@@ -34,7 +34,11 @@
             <% if current_user.check == "使用可" %>
             <P>ようこそ！</P>
             <% else %>
-            <p>warning</p>
+            <p>
+              規約違反をしている可能性があります<br>
+            <%= link_to "こちらをご確認ください", homes_warning_path, class: "text-danger" %>
+            </p>
+            
             <% end %>
             <li class="nav-item">
               <%= link_to user_page_path(current_user.id), class: 'nav-link text-success' do %>

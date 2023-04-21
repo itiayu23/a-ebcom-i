@@ -32,6 +32,10 @@ class User < ApplicationRecord
         enum check: {使用可: 0, 注意喚起: 1}
         
         
+        # is_deleteがfalseならtrueを返すようにしてる
+        def active_for_authentication?
+          super && (is_delete == false)
+        end
 
         # プロフィール画像何もないときのやつ
     def get_profile_image(width, height)

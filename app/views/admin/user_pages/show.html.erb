@@ -35,11 +35,11 @@
     </tr>
 
     <tr>
-        <td class="pr-5 py-2">公開・非公開非公開</td>
-        <td><% if @user.is_status == true %>
-      公開
+        <td class="pr-5 py-2">Check</td>
+        <td><% if @user.check == "使用可" %>
+      使用可
       <% else %>
-      非公開
+      注意喚起
       <% end %>
       </td>
     </tr>

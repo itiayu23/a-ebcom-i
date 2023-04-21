@@ -27,7 +27,7 @@ class Admin::UserPagesController < ApplicationController
   private
   
   def user_params
-  params.require(:user).permit(:nickname, :profile_image, :name, :birthday, :profile, :contact, :twitter, :facebook, :instagram).merge({check: params[:user][:check].to_i})
+  params.require(:user).permit(:nickname, :profile_image, :name, :birthday, :profile, :contact, :twitter, :facebook, :instagram, :is_delete).merge({check: params[:user][:check].to_i})
   end
   
 end

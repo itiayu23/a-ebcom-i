@@ -8,7 +8,7 @@
     <th>名前|ニックネーム</th>
     <th>メールアドレス</th>
     <th>ステータス</th>
-    <th>公開、非公開</th>
+    <th>チェック</th>
 
   </tr>
 
@@ -38,10 +38,10 @@
       <% end %>
     </td>
     <td>
-      <% if user.is_status == true %>
-      公開
+      <% if user.check == "使用可" %>
+      使用可
       <% else %>
-      非公開
+      注意喚起
       <% end %>
       
     </td>
