@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_20_111754) do
+ActiveRecord::Schema.define(version: 2023_04_21_121524) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -75,6 +75,15 @@ ActiveRecord::Schema.define(version: 2023_04_20_111754) do
     t.text "message", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "draw_tags", force: :cascade do |t|
+    t.integer "pict_tag_id"
+    t.integer "pict_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["pict_id"], name: "index_draw_tags_on_pict_id"
+    t.index ["pict_tag_id"], name: "index_draw_tags_on_pict_tag_id"
   end
 
   create_table "entries", force: :cascade do |t|
@@ -199,10 +208,23 @@ ActiveRecord::Schema.define(version: 2023_04_20_111754) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "write_tags", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "novel_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["novel_id"], name: "index_write_tags_on_novel_id"
+    t.index ["tag_id"], name: "index_write_tags_on_tag_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "draw_tags", "pict_tags"
+  add_foreign_key "draw_tags", "picts"
   add_foreign_key "entries", "rooms"
   add_foreign_key "entries", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "write_tags", "novels"
+  add_foreign_key "write_tags", "tags"
 end

@@ -4,6 +4,8 @@ class Pict < ApplicationRecord
   has_many_attached :image
   has_many :pict_comments, dependent: :destroy
   has_many :pict_bookmarks, dependent: :destroy
+  has_many :draw_tags, dependent: :destroy
+  has_many :pict_tags, through: :draw_tags, dependent: :destroy
   # 閲覧数
   has_many :read_counts, dependent: :destroy
   
