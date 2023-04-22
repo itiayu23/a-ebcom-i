@@ -13,7 +13,7 @@ class User::PictsController < ApplicationController
     tag_list = params[:pict][:pict_tag_ids].split(',')
 
     if @pict_new.save
-      @pict.save_pict_tags(tag_list)
+      @pict_new.save_pict_tags(tag_list)
       flash[:notice] = "作品が投稿されました"
       redirect_to pict_path(@pict_new.id)
     else

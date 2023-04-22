@@ -27,15 +27,10 @@ class Pict < ApplicationRecord
        end
   
        savepict_tags.each do |new_name|
-       pict_tag = Tag.find_or_create_by(name: mew_name)
+       pict_tag = Tag.find_or_create_by(name: new_name)
        self.tags << pict_tag
       end
   end
-        
-        savepict_tags.each do |new_name|
-          pict_tag = Tag.find_or_create_by(name: mew_name)
-          self.tags << pict_tag
-      end
          
 
   with_options presence: true do

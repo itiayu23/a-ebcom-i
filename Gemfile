@@ -58,6 +58,7 @@ gem 'devise'
 gem 'social-share-button'
 gem 'rinku'
 gem 'rails-i18n'
+gem 'devise-i18n'
 gem 'enum_help'
 gem 'kaminari'
 

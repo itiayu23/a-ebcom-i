@@ -15,7 +15,7 @@ class User::NovelsController < ApplicationController
      
      
     if @novel_new.save
-      @novel.save_tags(tag_list)
+      @novel_new.save_tags(tag_list)
       flash[:notice] = "小説が投稿されました"
       redirect_to novel_path(@novel_new.id)
     else
@@ -57,7 +57,7 @@ class User::NovelsController < ApplicationController
     @tag_list = params[:novel][:tag_ids].split(',')
     
     if @novel.update(novel_params)
-      @novel.save_tags(tag_list)
+      @novel.save_tags(@tag_list)
       flash[:notice] = "小説が更新されました"
       redirect_to novel_path(@novel.id)
     else
