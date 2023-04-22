@@ -10,7 +10,12 @@ class User::NovelsController < ApplicationController
     # 下書きを後で追加する
     @novel_new = Novel.new(novel_params)
     @novel_new.user_id = current_user.id
+    
+     tag_list = params[:novel][:tag_ids].split(',')
+     
+     
     if @novel_new.save
+      @novel.save_tags(tag_list)
       flash[:notice] = "小説が投稿されました"
       redirect_to novel_path(@novel_new.id)
     else
@@ -44,11 +49,15 @@ class User::NovelsController < ApplicationController
 
   def edit
     @novel = Novel.find(params[:id])
+    @tag_list = @novel.tags.pluck(:name).join(",")
   end
 
   def update
     @novel = Novel.find(params[:id])
+    @tag_list = params[:novel][:tag_ids].split(',')
+    
     if @novel.update(novel_params)
+      @novel.save_tags(tag_list)
       flash[:notice] = "小説が更新されました"
       redirect_to novel_path(@novel.id)
     else

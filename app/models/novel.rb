@@ -13,6 +13,21 @@ class Novel < ApplicationRecord
   scope :old, -> {order(created_at: :asc)}
 
 
+def save_tags(savenovel_tags)
+       current_tags = self.tags.pluck(:name) unless self.tags.nil?
+       old_tags = current_tags - savenovel_tags
+       new_tags = savenovel_tags - current_tags
+  
+       old_tags.each do |old_name|
+       self.tags.delete Tag.find_by(name: old_name)
+       end
+  
+       savenovel_tags.each do |new_name|
+       novel_tag = Tag.find_or_create_by(name: mew_name)
+       self.tags << novel_tag
+      end
+end
+      
 
 
    def bookmarked_by?(user)

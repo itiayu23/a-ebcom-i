@@ -9,8 +9,11 @@ class User::PictsController < ApplicationController
      # 下書きを後で追加する
     @pict_new = Pict.new(pict_params)
     @pict_new.user_id = current_user.id
+    
+    tag_list = params[:pict][:pict_tag_ids].split(',')
 
     if @pict_new.save
+      @pict.save_pict_tags(tag_list)
       flash[:notice] = "作品が投稿されました"
       redirect_to pict_path(@pict_new.id)
     else
@@ -42,11 +45,15 @@ class User::PictsController < ApplicationController
 
   def edit
     @pict = Pict.find(params[:id])
+    @tag_list = @pict.tags.pluck(:name).join(",")
   end
 
   def update
   @pict = Pict.find(params[:id])
+  @tag_list = params[:pict][:pict_tag_ids].split(',')
+
     if @pict.update(pict_params)
+      @pict.save_pict_tags(tag_list)
       flash[:notice] = "作品が更新されました"
       redirect_to pict_show_path(@pict.id)
     else

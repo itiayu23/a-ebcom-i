@@ -16,7 +16,26 @@ class Pict < ApplicationRecord
    def pict_bookmarked_by?(user)
        pict_bookmarks.exists?(user_id: user.id)
    end
-
+        
+  def save_tags(savepict_tags)
+       current_tags = self.tags.pluck(:name) unless self.tags.nil?
+       old_tags = current_tags - savepict_tags
+       new_tags = savepict_tags - current_tags
+  
+       old_tags.each do |old_name|
+       self.tags.delete Tag.find_by(name: old_name)
+       end
+  
+       savepict_tags.each do |new_name|
+       pict_tag = Tag.find_or_create_by(name: mew_name)
+       self.tags << pict_tag
+      end
+  end
+        
+        savepict_tags.each do |new_name|
+          pict_tag = Tag.find_or_create_by(name: mew_name)
+          self.tags << pict_tag
+      end
          
 
   with_options presence: true do

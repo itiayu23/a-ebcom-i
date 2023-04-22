@@ -22,6 +22,13 @@
         <!--最初の1行30文字くらいで…を入れて見せないようにする。詳細ページで全部見れるようにする。-->
         <%= novel.caption%>
       </td>
+      
+      <td>
+        <% novel.tags.each do |tag| %>
+          <span><%= tag.name %></span>
+          <% end %>
+      </td>
+      
     </tr>
     
     

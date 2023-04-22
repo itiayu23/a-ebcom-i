@@ -34,6 +34,13 @@
   </p>
   <P><%= @pict.caption %></P>
 </div>
+
+<div>
+<% @pict.pict_tags.each do |tag| %>
+          <span><%= tag.name %></span>
+          <% end %>
+</div>
+
 <div class="text-right">
   <div class="pict_bookmarks_button_<%= @pict.id %>">
     <%= render 'user/pict_bookmarks/bookmark-btn', pict: @pict %>

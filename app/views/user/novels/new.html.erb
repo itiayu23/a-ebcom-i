@@ -18,6 +18,12 @@
   <div class="form-group">
     <%= f.select :privacy, [["公開",1],["非公開",2]], include_blank: "選択してください" %>
   </div>
+  
+  <!--タグの部分のみ抜粋-->
+  <div class="form-group">
+  <%= f.text_field :tags, class: "form-control", id: 'tag_ids',\
+   placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
+  </div>
  
   <%= f.submit '投稿' %>
 

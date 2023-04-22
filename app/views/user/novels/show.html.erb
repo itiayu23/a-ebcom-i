@@ -1,4 +1,4 @@
-<h1>User::Novels#show</h1>
+<h1><%= @novel.title %>の小説</h1>
 <table class="table">
   <tbody>
  <tr>
@@ -18,9 +18,9 @@
     
   <td><%= @novel.caption %></td>
   <!--<td>-->
-          <%# @novel.tags.each do |tag| %>
-          <span><%#= tag.name %></span>
-          <%# end %>
+          <% @novel.tags.each do |tag| %>
+          <span><%= tag.name %></span>
+          <% end %>
   <!--      </td>-->
   
       <td class="bookmarks_button_<%= @novel.id %>">
