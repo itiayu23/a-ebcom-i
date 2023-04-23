@@ -9,7 +9,7 @@ class User::PictsController < ApplicationController
      # 下書きを後で追加する
     @pict_new = Pict.new(pict_params)
     @pict_new.user_id = current_user.id
-    
+
     tag_list = params[:pict][:pict_tag_ids].split(',')
 
     if @pict_new.save
@@ -34,10 +34,17 @@ class User::PictsController < ApplicationController
   end
 
   def index
+    @q_pict = PictTag.ransack(params[:q])
+
     if params[:latest]
       @picts = Pict.where(privacy: "1").latest
     elsif params[:old]
       @picts = Pict.old.where(privacy: "1")
+
+    elsif  params[:q].present?
+
+      @picts = Pict.where(id: DrawTag.where(pict_tag_id: @q_pict.result.order(created_at: :desc).pluck(:id)).pluck(:pict_id)).where(privacy: "1") || Pict.where(privacy: "1")
+
     else
       @picts = Pict.where(privacy: "1")
     end
@@ -45,17 +52,17 @@ class User::PictsController < ApplicationController
 
   def edit
     @pict = Pict.find(params[:id])
-    @tag_list = @pict.tags.pluck(:name).join(",")
+    @pict_tag_list = @pict.pict_tags.pluck(:name).join(",")
   end
 
   def update
   @pict = Pict.find(params[:id])
-  @tag_list = params[:pict][:pict_tag_ids].split(',')
+  @pict_tag_list = params[:pict][:pict_tag_ids].split(',')
 
     if @pict.update(pict_params)
-      @pict.save_pict_tags(tag_list)
+      @pict.save_pict_tags(@pict_tag_list)
       flash[:notice] = "作品が更新されました"
-      redirect_to pict_show_path(@pict.id)
+      redirect_to pict_path(@pict.id)
     else
       render :edit
     end

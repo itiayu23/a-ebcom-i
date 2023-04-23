@@ -1,2 +1,9 @@
 <h1>小説一覧</h1>
+
+<%= search_form_for @q, url: novels_path do |f| %>
+<%= f.search_field :name_cont_any, placeholder: 'タグ検索' %>
+<%= f.submit %>
+<% end %>
+<%= link_to "タグをリセットする", novels_path, class: "btn btn-info" %>
+
 <%= render 'novel_index', novels: @novels %>

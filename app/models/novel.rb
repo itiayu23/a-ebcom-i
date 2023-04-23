@@ -22,7 +22,7 @@ def save_tags(savenovel_tags)
        self.tags.delete Tag.find_by(name: old_name)
        end
   
-       savenovel_tags.each do |new_name|
+       new_tags.each do |new_name|
        novel_tag = Tag.find_or_create_by(name: new_name)
        self.tags << novel_tag
       end

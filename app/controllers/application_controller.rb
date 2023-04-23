@@ -1,5 +1,14 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  
+  # before_action :set_search
+  
+  # def set_search
+  #   @novel_search = Tag.ransack(params[:q])
+  #   @search_write = @novel_search.result
+  #   @pict_search = PictTag.ransack(params[:q])
+  #   @search_draw = @pict_search.result
+  # end
 
   protected
 

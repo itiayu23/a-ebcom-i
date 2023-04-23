@@ -17,18 +17,18 @@ class Pict < ApplicationRecord
        pict_bookmarks.exists?(user_id: user.id)
    end
         
-  def save_tags(savepict_tags)
-       current_tags = self.tags.pluck(:name) unless self.tags.nil?
-       old_tags = current_tags - savepict_tags
-       new_tags = savepict_tags - current_tags
+  def save_pict_tags(savepict_tags)
+       current_pict_tags = self.pict_tags.pluck(:name) unless self.pict_tags.nil?
+       old_pict_tags = current_pict_tags - savepict_tags
+       new_pict_tags = savepict_tags - current_pict_tags
   
-       old_tags.each do |old_name|
-       self.tags.delete Tag.find_by(name: old_name)
+       old_pict_tags.each do |old_name|
+       self.pict_tags.delete PictTag.find_by(name: old_name)
        end
   
-       savepict_tags.each do |new_name|
-       pict_tag = Tag.find_or_create_by(name: new_name)
-       self.tags << pict_tag
+       new_pict_tags.each do |new_name|
+       pict_tag = PictTag.find_or_create_by(name: new_name)
+       self.pict_tags << pict_tag
       end
   end
          

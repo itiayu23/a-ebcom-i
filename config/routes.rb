@@ -34,7 +34,7 @@
       # フォローする
       get 'followings' => 'relationships#followings', as: 'followings'
       # フォローされる
-      get 'followers' => 'relationships#follwers', as: 'follwers'
+      get 'followers' => 'relationships#followers', as: 'followers'
     end
     get 'user/user_page/:id/check' => 'user_pages#check', as: 'check'
     patch 'user/user_page/:id/withdraw' => 'user_pages#withdraw', as: 'withdraw'

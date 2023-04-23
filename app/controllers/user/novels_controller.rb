@@ -38,10 +38,16 @@ class User::NovelsController < ApplicationController
   end
 
   def index
+    @q = Tag.ransack(params[:q])
     if params[:latest]
       @novels = Novel.latest.where(privacy: "1")
     elsif params[:old]
       @novels = Novel.old.where(privacy: "1")
+      
+    elsif params[:q].present?
+      
+      @novels = Novel.where(id: WriteTag.where(tag_id: @q.result.order(created_at: :desc).pluck(:id)).pluck(:novel_id)).where(privacy: "1") || Novel.where(privacy: "1")
+      
     else
       @novels = Novel.where(privacy: "1")
     end
