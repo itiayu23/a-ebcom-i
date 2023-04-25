@@ -62,6 +62,7 @@ gem 'devise-i18n'
 gem 'enum_help'
 gem 'kaminari'
 gem 'ransack'
+ gem 'bootstrap4-kaminari-views'
 
 
 gem 'dotenv-rails'
