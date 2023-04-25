@@ -1,2 +1,44 @@
-<h1>User::Homes#top</h1>
-<p>Find me in app/views/user/homes/top.html.erb</p>
+<h1>ようこそA-EBCOM-Iへ‼</h1>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a href="#contents1" class="nav-link active" data-toggle="tab">
+      <p>イラスト・漫画</p></a>
+    </li>
+  <li class="nav-item">
+    <a href="#contents2" class="nav-link" data-toggle="tab">
+      <p>小説</p></a>
+    </li>
+</ul>
+
+<div class="tab-content">
+  <div id="contents1" class="tab-pane active">
+<p>
+<%= link_to 'イラスト・漫画の新着順', picts_path(latest: "true") %>
+|<%= link_to 'イラスト・漫画の古い順', picts_path(old: "true") %>
+
+<%= search_form_for @q_pict, url: picts_path do |f| %>
+<%= f.search_field :name_cont_any, placeholder: 'タグ検索' %>
+<%= f.submit %>
+<% end %>
+<%= link_to "タグをリセットする", picts_path, class: "btn btn-info" %>
+
+
+<%= render 'user/picts/pict_index', picts: @picts %></p>
+</div>
+
+<div id="contents2" class="tab-pane">
+<p>
+  <%= link_to '小説新着順', novels_path(latest: "true") %>
+  |<%= link_to '小説古い順', novels_path(old: "true") %>
+
+<%= search_form_for @q, url: novels_path do |f| %>
+<%= f.search_field :name_cont_any, placeholder: 'タグ検索' %>
+<%= f.submit %>
+<% end %>
+<%= link_to "タグをリセットする", novels_path, class: "btn btn-info" %>
+
+<%= render 'user/novels/novel_index', novels: @novels %></p>
+</div>
+
+</div>

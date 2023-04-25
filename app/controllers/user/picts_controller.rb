@@ -37,16 +37,16 @@ class User::PictsController < ApplicationController
     @q_pict = PictTag.ransack(params[:q])
 
     if params[:latest]
-      @picts = Pict.where(privacy: "1").latest
+      @picts = Pict.where(privacy: "1").latest.page(params[:page])
     elsif params[:old]
-      @picts = Pict.old.where(privacy: "1")
+      @picts = Pict.old.where(privacy: "1").page(params[:page])
 
     elsif  params[:q].present?
 
-      @picts = Pict.where(id: DrawTag.where(pict_tag_id: @q_pict.result.order(created_at: :desc).pluck(:id)).pluck(:pict_id)).where(privacy: "1") || Pict.where(privacy: "1")
+      @picts = Pict.where(id: DrawTag.where(pict_tag_id: @q_pict.result.order(created_at: :desc).pluck(:id)).pluck(:pict_id)).where(privacy: "1").page(params[:page]) || Pict.where(privacy: "1").page(params[:page])
 
     else
-      @picts = Pict.where(privacy: "1")
+      @picts = Pict.where(privacy: "1").page(params[:page])
     end
   end
 

@@ -79,8 +79,23 @@
 <% end %>
 </div>
 
-<h3>イラスト、マンガ</h3>
-<%= render 'user/picts/pict_index', picts: @picts %>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a href="#contents1" class="nav-link active" data-toggle="tab">
+      <p>イラスト・漫画</p></a>
+    </li>
+  <li class="nav-item">
+    <a href="#contents2" class="nav-link" data-toggle="tab">
+      <p>小説</p></a>
+    </li>
+</ul>
+<div class="tab-content">
+  <div id="contents1" class="tab-pane active">
+    <p><%= render 'user/picts/pict_index', picts: @picts %></p>
+  </div>
 
-<h3>小説</h3>
-<%= render 'user/novels/novel_index', novels: @novels %>
+<div id="contents2" class="tab-pane">
+    <p><%= render 'user/novels/novel_index', novels: @novels %></p>
+</div>
+
+</div>

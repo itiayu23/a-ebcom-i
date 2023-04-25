@@ -6,11 +6,11 @@ class User::UserPagesController < ApplicationController
       
       
       if @user == current_user
-        @picts = @user.picts
-        @novels = @user.novels
+        @picts = @user.picts.page(params[:page])
+        @novels = @user.novels.page(params[:page])
       else
-        @novels = @user.novels.where(privacy: "1")
-        @picts = @user.picts.where(privacy: "1")
+        @novels = @user.novels.where(privacy: "1").page(params[:page])
+        @picts = @user.picts.where(privacy: "1").page(params[:page])
       end
      
     # DM用コントローラー

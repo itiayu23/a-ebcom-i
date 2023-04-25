@@ -40,16 +40,16 @@ class User::NovelsController < ApplicationController
   def index
     @q = Tag.ransack(params[:q])
     if params[:latest]
-      @novels = Novel.latest.where(privacy: "1")
+      @novels = Novel.latest.where(privacy: "1").page(params[:page])
     elsif params[:old]
-      @novels = Novel.old.where(privacy: "1")
+      @novels = Novel.old.where(privacy: "1").page(params[:page])
       
     elsif params[:q].present?
       
-      @novels = Novel.where(id: WriteTag.where(tag_id: @q.result.order(created_at: :desc).pluck(:id)).pluck(:novel_id)).where(privacy: "1") || Novel.where(privacy: "1")
+      @novels = Novel.where(id: WriteTag.where(tag_id: @q.result.order(created_at: :desc).pluck(:id)).pluck(:novel_id)).where(privacy: "1").page(params[:page]) || Novel.where(privacy: "1").page(params[:page])
       
     else
-      @novels = Novel.where(privacy: "1")
+      @novels = Novel.where(privacy: "1").page(params[:page])
     end
   end
 
