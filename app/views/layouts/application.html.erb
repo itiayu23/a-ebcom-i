@@ -22,7 +22,7 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand p-3" href="/"><%#= image_tag('logo.png') %></a>
+          <a class="navbar-brand p-3" href="/"><%= image_tag('logo.png') %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -47,19 +47,19 @@
             </li>
             <li class="nav-item">
               <%= link_to new_novel_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-user"></i> 小説投稿
+              <i class="fa-solid fa-file-pen"></i> 小説投稿
               <% end %>
             </li>
 
             <li class="nav-item">
               <%= link_to new_pict_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-user"></i> イラスト・漫画投稿
+              <i class="fa-solid fa-file-image"></i> イラスト・漫画投稿
               <% end %>
             </li>
 
             <li class="nav-item">
               <%= link_to picts_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-pen-nib"></i> みんなのイラスト・漫画
+              <i class="fa-solid fa-palette"></i> みんなのイラスト・漫画
               <% end %>
             </li>
 
@@ -71,7 +71,7 @@
 
             <li class="nav-item">
               <%= link_to destroy_user_session_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-user"></i>会員 Log Out
+              <i class="fa-solid fa-door-open"></i>会員 Log Out
               <% end %>
             </li>
 
@@ -97,7 +97,7 @@
             
             <li class="nav-item">
               <%= link_to destroy_admin_session_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-shield-halved"></i>管理人 Log Out
+              <i class="fa-duotone fa-door-open"></i>管理人 Log Out
               <% end %>
             </li>
             <% else %>
@@ -105,7 +105,7 @@
 
             <li class="nav-item">
               <%= link_to picts_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-pen-nib"></i> みんなのイラスト・漫画
+              <i class="fa-solid fa-palette"></i> みんなのイラスト・漫画
               <% end %>
             </li>
 
@@ -117,19 +117,19 @@
 
             <li class="nav-item">
               <%= link_to homes_about_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-pen-nib"></i> About
+              <i class="fa-solid fa-seedling"></i> About
               <% end %>
             </li>
 
             <li class="nav-item">
               <%= link_to new_user_registration_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-pen-nib"></i> 新規登録
+              <i class="fa-solid fa-user-plus"></i> 新規登録
               <% end %>
             </li>
 
             <li class="nav-item">
               <%= link_to new_user_session_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-pen-nib"></i> Log In
+              <i class="fa-solid fa-right-to-bracket"></i> Log In
               <% end %>
             </li>
 
