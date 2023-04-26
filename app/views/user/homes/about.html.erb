@@ -1,5 +1,9 @@
-<div class="text-center">
-<h1>A-Ebcom-Iにようこそ‼</h1>
+<div class='container px-5 px-0'>
+  <div class='row'>
+<div class='col ofset-3 mt-5 text-center'>
+
+  <div class="jumbotron">
+<h1 class="display-8">A-Ebcom-Iにようこそ‼</h1></div>
 <p>ここはイラストやマンガ、小説など創作がお好きな方のためのSNSサイトです</p>
 皆さんが楽しく当投稿サイトをご活用して頂けたら嬉しいです！
 
@@ -9,7 +13,18 @@
 好きな方にフォローしたり、相互フォローになるとDM機能を使ってコミュニケーションをすることもできます。
 ぜひ楽しい創作活動にお役立てください。
 
-また、投稿される方はこちらをご一読ください
+また、投稿される方はこちらをご一読ください。
 
-何かありましたら、遠慮なくお問い合わせくださいませ。
+何かありましたら、
+<%= link_to "遠慮なくお問い合わせくださいませ。", new_contact_path , class: "text-success" %><br>
+また、皆さまが楽しく創作活動が出来るようにお願いごとを設けています。
+投稿される際は、
+<%= link_to "こちらをよく読みルールを守っていただけますようお願いいたします。", homes_warning_path, class: "text-danger" %>
+
 </div>
+
+
+  </div>
+</div>
+
+
