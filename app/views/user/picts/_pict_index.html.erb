@@ -3,7 +3,7 @@
 
 
   <% picts.each do |pict| %>
-  <div class="card w-50 mx-auto mt-4 shadow-lg">
+  <div class="card w-50 mx-auto mt-5 shadow-lg">
     <%= link_to pict_path(pict.id), class: "text-dark" do %>
     <%= image_tag pict.image.first.variant(resize: '500x500') %>
     <%#= image_tag pict.get_image, class: "card-img-top"; %>

@@ -45,17 +45,22 @@
               <i class="fa-solid fa-user"></i> マイページ
               <% end %>
             </li>
+            
+            
             <li class="nav-item">
-              <%= link_to new_novel_path, class: 'nav-link text-success' do %>
+              <%= link_to new_pict_path, class: 'nav-link text-info' do %>
+              <i class="fa-solid fa-file-image"></i> イラスト・漫画投稿
+              <% end %>
+            </li>
+            
+            
+            <li class="nav-item">
+              <%= link_to new_novel_path, class: 'nav-link text-info' do %>
               <i class="fa-solid fa-file-pen"></i> 小説投稿
               <% end %>
             </li>
 
-            <li class="nav-item">
-              <%= link_to new_pict_path, class: 'nav-link text-success' do %>
-              <i class="fa-solid fa-file-image"></i> イラスト・漫画投稿
-              <% end %>
-            </li>
+            
 
             <li class="nav-item">
               <%= link_to picts_path, class: 'nav-link text-success' do %>
@@ -149,5 +154,16 @@
     <main>
     <%= yield %>
     </main>
+    
+    
+    <footer>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+        <p class="text-secondary">CopyRight A-Ebcom-I pictonovel communication.inc</p>
+      </div>
+      </div>
+      </div>
+    </footer>
   </body>
 </html>

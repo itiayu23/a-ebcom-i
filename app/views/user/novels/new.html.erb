@@ -1,17 +1,26 @@
+<div class="container mt-5">
+        <div class="row">
+          <div class="col">
+
 <h1>小説投稿ページ</h1>
 <%= form_with model: @novel_new do |f| %>
 
 <table class="table">
 
-  <%= f.text_field :title, placeholder: "タイトル" %>
-
+<div class="form-group">
+  <%= f.text_field :title, placeholder: "タイトル", class: 'form-control' %>
+</div>
   <!--別ページにリロードなしで行けて個別に書ける、下書き保存が出来る-->
-  <%= f.text_area :text_body, placeholder: "本文" %>
-  <%= f.text_area :caption, placeholder: "小説の説明、あらすじなど" %>
+  <div class="form-group">
+  <%= f.text_area :text_body, placeholder: "本文", class: 'form-control' %>
+  </div>
 
+ <div class="form-group">
+  <%= f.text_area :caption, placeholder: "小説の説明、あらすじなど", class: 'form-control' %>
+ </div>
   <!--表紙アップロードにする。-->
   <div class="form-group">
-    <%= f.label :image, "画像をアップロード" %>
+    <%= f.label :image, "表紙画像アップロード" %><br>
     <%= f.file_field :image, placeholder: "小説の表紙", accept: "image/*", class: "form-control-file" %>
   </div>
 
@@ -24,8 +33,14 @@
   <%= f.text_field :tag_ids, class: "form-control", id: 'tag_ids',\
    placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
   </div>
-
   <%= f.submit '投稿' %>
+  <br>
+<%= link_to "投稿の際はこちらを守っていただけますようお願いいたします。", homes_warning_path, class: "text-danger" %>
 
 </table>
 <% end %>
+</div>
+
+
+  </div>
+</div>

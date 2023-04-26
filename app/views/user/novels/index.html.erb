@@ -1,5 +1,10 @@
 <h1>小説一覧</h1>
 
+<p>
+  <%= link_to '小説新着順', novels_path(latest: "true") %>
+  |<%= link_to '小説古い順', novels_path(old: "true") %>
+</p>
+
 <%= search_form_for @q, url: novels_path do |f| %>
 <%= f.search_field :name_cont_any, placeholder: 'タグ検索' %>
 <%= f.submit %>
