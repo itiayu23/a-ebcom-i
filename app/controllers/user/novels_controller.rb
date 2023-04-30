@@ -1,6 +1,6 @@
 class User::NovelsController < ApplicationController
   # 自分以外の人が他人の小説を編集させないようにするコード
-  before_action :ensure_novel, only:[:edit, :update, :destroy]
+  before_action :ensure_novel, only:[:edit, :update, :destroy, :new]
 
   def new
     @novel_new = Novel.new

@@ -87,6 +87,12 @@ class User::PictsController < ApplicationController
   redirect_to picts_path unless @pict
   # unlessだった場合自分のイラスト一覧に飛ぶ
   end
+  
+  # def is_matching_login_user
+  #   user_id = params[:id].to_i
+  #   unless  
+      
+    # end
 
 
 end

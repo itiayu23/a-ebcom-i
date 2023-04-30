@@ -46,10 +46,12 @@ class User::UserPagesController < ApplicationController
   end
 
   def edit
+     is_matching_login_user
       @user = User.find(params[:id])
   end
 
   def update
+    is_matching_login_user
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "プロフィールが更新されました"
@@ -80,7 +82,7 @@ end
 def is_matching_login_user
   user_id = params[:id].to_i
   unless user_id == current_user.id
-    redirect_to user_page_path(current_user.id)
+    redirect_to root_path
   end
 
 end
