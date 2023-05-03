@@ -1,4 +1,4 @@
-<h1>Admin::Comments#index</h1>
+<h1>小説コメント一覧</h1>
 
 <div>
     
@@ -12,12 +12,12 @@
                   
       <% if 0 > comment.score %> 
       <p class="text-danger">
-        <span class="pict_comment-comment"><%= comment.comment %></span>
+        <span class="comment-comment"><%= comment.comment %></span>
         <%= comment.score %>
       </p>
       <% else %>
         <p class="text-info">
-          <span class="pict_comment-comment"><%= comment.comment %></span>
+          <span class="comment-comment"><%= comment.comment %></span>
           <%= comment.score %>
         </p>
       <% end %>

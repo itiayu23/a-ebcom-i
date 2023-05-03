@@ -1,2 +1,27 @@
-<h1>Admin::PictComments#index</h1>
-<p>Find me in app/views/admin/pict_comments/index.html.erb</p>
+<h1>イラストコメント一覧</h1>
+<div>
+    
+  <% @pict_comments.each do |comment| %>
+  
+    <div>
+      <%= link_to admin_user_page_path(comment.user.id) do %>
+                     <%= image_tag comment.user.get_profile_image(100,100), class: "mt-3 rounded-circle"; %></br>
+                     <%= comment.user.nickname %>
+                  <% end %>
+                  
+      <% if 0 > comment.score %> 
+      <p class="text-danger">
+        <span class="pict_comment-comment"><%= comment.comment %></span>
+        <%= comment.score %>
+      </p>
+      <% else %>
+        <p class="text-info">
+          <span class="pict_comment-comment"><%= comment.comment %></span>
+          <%= comment.score %>
+        </p>
+      <% end %>
+    </div>
+    
+  
+  <% end %>
+</div>
