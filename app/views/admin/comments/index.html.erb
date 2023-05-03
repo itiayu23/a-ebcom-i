@@ -1,0 +1,28 @@
+<h1>Admin::Comments#index</h1>
+
+<div>
+    
+  <% @comments.each do |comment| %>
+  
+    <div>
+      <%= link_to admin_user_page_path(comment.user.id) do %>
+                     <%= image_tag comment.user.get_profile_image(100,100), class: "mt-3 rounded-circle"; %></br>
+                     <%= comment.user.nickname %>
+                  <% end %>
+                  
+      <% if 0 > comment.score %> 
+      <p class="text-danger">
+        <span class="pict_comment-comment"><%= comment.comment %></span>
+        <%= comment.score %>
+      </p>
+      <% else %>
+        <p class="text-info">
+          <span class="pict_comment-comment"><%= comment.comment %></span>
+          <%= comment.score %>
+        </p>
+      <% end %>
+    </div>
+    
+  
+  <% end %>
+</div>

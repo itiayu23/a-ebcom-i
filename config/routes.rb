@@ -1,6 +1,12 @@
  Rails.application.routes.draw do
 
   namespace :admin do
+    get 'pict_comments/index'
+  end
+  namespace :admin do
+    get 'comments/index'
+  end
+  namespace :admin do
     # get 'contacts/index'
     # get 'contacts/show'
     resources :contacts, only: [:index, :show]

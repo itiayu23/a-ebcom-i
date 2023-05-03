@@ -8,7 +8,9 @@
                   <% end %>
                   
                   <span class="comment-comment"><%= comment.comment %></span>
+                  <% if admin_signed_in? %>
                   <p class="sentiment-score">本文の感情分析スコア[<%= comment.score %>]</p>
+                  <% end %>
                  
                   <% if comment.user == current_user %>
                   
