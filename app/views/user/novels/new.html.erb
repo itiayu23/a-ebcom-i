@@ -30,10 +30,19 @@
 
   <!--タグの部分のみ抜粋-->
   <div class="form-group">
+    タグをつける。複数つけるには','で区切ってください。
   <%= f.text_field :tag_ids, class: "form-control", id: 'tag_ids',\
    placeholder: "タグをつける。複数つけるには','で区切ってください。" %>
   </div>
-  <%= f.submit '投稿' %>
+  
+  <div class="submit">
+  <%= f.submit '下書き保存をする', name: "draft" %>
+  </div>
+  
+  <div class="submit">
+  <%= f.submit '小説を投稿する', name: "create" %>
+  </div>
+  
   <br>
 <%= link_to "投稿の際はこちらを守っていただけますようお願いいたします。", homes_warning_path, class: "text-danger" %>
 

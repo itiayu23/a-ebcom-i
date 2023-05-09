@@ -52,6 +52,18 @@ class User::NovelsController < ApplicationController
       @novels = Novel.where(privacy: "1").page(params[:page])
     end
   end
+  
+  def draft
+    @novel = Novel.find(params[:id])
+    if @novel.display == "1"
+      @novel.update(display: 0)
+      redirect_to novel_path(@novel)
+    else
+      @novel.update(display: 1)
+      redirect_to novel_path(@novel)
+    end
+  end
+  
 
   def edit
     @novel = Novel.find(params[:id])
