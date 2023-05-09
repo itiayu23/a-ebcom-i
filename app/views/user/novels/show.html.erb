@@ -33,6 +33,27 @@
         
 
   <% if @novel.user == current_user %>
+  
+  
+        <% if @novel.display == "1" %>
+        
+        
+        <%= link_to novels_draft_path(@novel) do %>
+        <div class="edit">
+          下書きに戻す
+          </div>
+          
+        <% end %>
+        
+        <% else %>
+         <%= link_to novels_draft_path(@novel) do %>
+           <div class="edit">
+             下書き
+             </div>
+          <% end %>
+          
+          <% end %>
+          
         
           <td><%= link_to edit_novel_path(@novel.id), class: "btn btn-sm btn-success" do %>
           Edit<% end %></td>

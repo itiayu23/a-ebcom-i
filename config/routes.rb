@@ -49,6 +49,7 @@
       resource :bookmarks, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
+    get 'novels/draft'
 
     resources :picts do
       resource :pict_bookmarks, only: [:create, :destroy]
