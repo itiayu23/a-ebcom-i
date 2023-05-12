@@ -11,6 +11,12 @@ class User::PictBookmarksController < ApplicationController
     @pict = Pict.find(params[:pict_id])
     @pict_bookmark = current_user.pict_bookmarks.new(pict_id: @pict.id)
     @pict_bookmark.save
+    # 通知の作成
+    @pict.create_notification_by(current_user)
+    respond_to do |format|
+      format.html {redirect_to request.referrer}
+        format.js
+    end
   end
 
   def destroy

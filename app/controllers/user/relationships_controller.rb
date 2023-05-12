@@ -3,6 +3,9 @@ class User::RelationshipsController < ApplicationController
   def create
     current_user.follow(params[:user_page_id])
     redirect_to request.referer
+    
+    # 通知の作成
+    @user.create_notification_follow!(current_user)
   end
 
 

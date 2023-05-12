@@ -11,6 +11,14 @@ class User::BookmarksController < ApplicationController
     @novel = Novel.find(params[:novel_id])
     @bookmark = current_user.bookmarks.new(novel_id: @novel.id)
     @bookmark.save
+    
+    # 通知の作成
+    @novel.create_notification_by(current_user)
+    respond_to do |format|
+      format.html {redirect_to request.referrer}
+        format.js
+    end
+    
   end
 
   def destroy
