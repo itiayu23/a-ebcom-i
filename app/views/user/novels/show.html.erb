@@ -4,57 +4,57 @@
  <tr>
   <td>
     <%= link_to user_page_path(@user.id) do %>
-    
+
     <%= image_tag @user.get_profile_image(100,100), class: "mt-3 rounded-circle"; %>
   <br>
   <%= @user.name %>
   <% end %>
   </td>
-  
+
   <td><%= link_to novel_path(@novel.id) do %>
     <%= @novel.title %>
     <% end %>
     </td>
-    
+
   <td><%= @novel.caption %></td>
   <!--<td>-->
           <% @novel.tags.each do |tag| %>
           <span><%= tag.name %></span>
           <% end %>
   <!--      </td>-->
-  
+
       <td class="bookmarks_button_<%= @novel.id %>">
         <%= render 'user/bookmarks/bookmark-btn', novel: @novel %>
       </td>
-      
+
        <td>
           <p>コメント数:<%= @novel.comments.count %></p>
         </td>
-        
+
 
   <% if @novel.user == current_user %>
-  
-  
+
+
         <% if @novel.display == "1" %>
-        
-        
-        <%= link_to novels_draft_path(@novel) do %>
+
+
+        <%= link_to draft_novel_path(@novel) do %>
         <div class="edit">
           下書きに戻す
           </div>
-          
+
         <% end %>
-        
+
         <% else %>
-         <%= link_to novels_draft_path(@novel) do %>
+         <%= link_to draft_novel_path(@novel) do %>
            <div class="edit">
              下書き
              </div>
           <% end %>
-          
+
           <% end %>
-          
-        
+
+
           <td><%= link_to edit_novel_path(@novel.id), class: "btn btn-sm btn-success" do %>
           Edit<% end %></td>
           <td><%= link_to novel_path(@novel.id), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-danger" do %>
@@ -63,18 +63,18 @@
   <% else %>
      <td></td>
      <td></td>
-  
-       
-  
+
+
+
  <% end %>
   </tr>
-  
+
   <tr>
     <td>
       <%= @novel.text_body %>
     </td>
   </tr>
-  
+
  </tbody>
 </table>
 
@@ -83,7 +83,7 @@
   <%= render 'user/comments/comment-index', novel: @novel %>
 </div>
 <div class="comment_form">
-<%= render 'user/comments/form', novel: @novel, comment: @comment %>  
+<%= render 'user/comments/form', novel: @novel, comment: @comment %>
 </div>
 
 

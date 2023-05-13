@@ -29,8 +29,9 @@
     root to: 'homes#top'
     get 'homes/about'
     get 'homes/warning'
-    
+
     resources :notifications, only: :index
+    delete 'notifications/destroy_all'
 
     resources :contacts, only: [:new, :create]
     post 'contacts/confilm', to: 'contacts#confilm', as: 'confilm'
@@ -47,11 +48,15 @@
     get 'user/user_page/:id/check' => 'user_pages#check', as: 'check'
     patch 'user/user_page/:id/withdraw' => 'user_pages#withdraw', as: 'withdraw'
     # resources :bookmarks, only: [:index]
+
     resources :novels do
+      member do
+        get 'draft'
+      end
       resource :bookmarks, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
-    get 'novels/draft'
+
 
     resources :picts do
       resource :pict_bookmarks, only: [:create, :destroy]

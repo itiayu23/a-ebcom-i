@@ -1,4 +1,4 @@
-class Users::NotificationsController < ApplicationController
+class User::NotificationsController < ApplicationController
   
   def index
     #current_userの投稿に紐づいた通知一覧
