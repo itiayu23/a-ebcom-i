@@ -5,8 +5,7 @@ class User::PictCommentsController < ApplicationController
     @comment.score = Language.get_data(pict_comment_params[:comment])
     if @comment.save!
         # 通知の作成
-    @comment_pict.create_notification_comment!(current_user, @comment.id)
-    render :index
+    @comment.create_notification_pict_comment!(current_user, @pict.user)
     end
   end
 
