@@ -6,8 +6,7 @@ class User::CommentsController < ApplicationController
     @comment.score = Language.get_data(comment_params[:comment])
     if @comment.save!
     # 通知の作成
-    @comment_novel.create_notification_comment!(current_user, @comment.id)
-    render :index
+    @comment.create_notification_comment!(current_user, @novel.user)
     end
     
     
