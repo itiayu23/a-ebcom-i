@@ -7,15 +7,15 @@
   <tbody>
 
     <tr>
-      <td>
+      <td class="novel_tag">
         <%= link_to novel_path(novel.id) do %>
         <%= image_tag novel.get_image, size: "100x100" %>
         <% end %>
       </td>
-      <td>
+      <td class="novel_tag">
         <!--投稿ユーザーのアイコンとリンク-->
         <%= link_to user_page_path(novel.user.id) do %>
-        <%= image_tag novel.user.get_profile_image(50,50) %><%= novel.user.nickname %>
+        <%= image_tag novel.user.get_profile_image(50,50), class: "mt-3 rounded-circle" %><%= novel.user.nickname %>
         <% end %>
       </td>
       <td class="novel_caption">
