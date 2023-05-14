@@ -2,7 +2,7 @@
 
     <% users.each do |user| %>
 <div class="text-right">
-    <%= link_to "ユーザーページに戻る", user_page_path(user.id) %>
+    <%= link_to "ユーザーページに戻る", user_page_path(current_user) %>
 </div>
     <table class="table">
       <thead>

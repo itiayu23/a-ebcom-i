@@ -3,9 +3,9 @@
 <%# elsif novel.privacy == "2" && novel.user.id == user_signed_in? && current_user.id %>
 
 <table class="table table-hover table-inverse">
-  
+
   <tbody>
-    
+
     <tr>
       <td>
         <%= link_to novel_path(novel.id) do %>
@@ -18,20 +18,20 @@
         <%= image_tag novel.user.get_profile_image(50,50) %><%= novel.user.nickname %>
         <% end %>
       </td>
-      <td>
+      <td class="novel_caption">
         <!--最初の1行30文字くらいで…を入れて見せないようにする。詳細ページで全部見れるようにする。-->
         <%= novel.caption%>
       </td>
-      
-      <td>
+
+      <td class="novel_tag">
         <% novel.tags.each do |tag| %>
           <span><%= tag.name %></span>
           <% end %>
       </td>
-      
+
     </tr>
-    
-    
+
+
   </tbody>
 </table>
 <%# end %>
