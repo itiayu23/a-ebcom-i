@@ -9,6 +9,7 @@ class User::BookmarksController < ApplicationController
 
   def create
     @novel = Novel.find(params[:novel_id])
+    
     @bookmark = current_user.bookmarks.new(novel_id: @novel.id)
     @bookmark.save
     
