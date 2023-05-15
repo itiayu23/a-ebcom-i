@@ -3,6 +3,8 @@
           <div class="col">
 
 <h1>小説投稿ページ</h1>
+<% if user_signed_in? %>
+
 <%= form_with model: @novel_new do |f| %>
 
 <table class="table">
@@ -44,6 +46,16 @@
 
 </table>
 <% end %>
+<% else %>
+             <p>
+                <%= link_to "投稿をするには新規登録をお願いします", new_user_registration_path, class: "text text-warning" %>
+             </p>
+             <p>
+                <%= link_to "登録済みの方はこちらからログインをお願いいたします。", new_user_session_path %>
+             </p>
+              
+<% end %>
+
 </div>
 
 

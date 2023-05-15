@@ -1,5 +1,6 @@
 <!--要確認-->
-        <% if user_signed_in? && pict.pict_bookmarked_by?(current_user) %>
+        <% if user_signed_in? %>
+        <% if pict.pict_bookmarked_by?(current_user) %>
               <p>
               <%= link_to pict_pict_bookmarks_path(pict), method: :delete, class: "text-danger", remote: true do %>
               <i class="fa-solid fa-heart"></i><%= pict.pict_bookmarks.count %>
@@ -10,5 +11,14 @@
                 <%= link_to pict_pict_bookmarks_path(pict), method: :post, remote: true do %>
                <i class="fa-solid fa-heart"></i><%= pict.pict_bookmarks.count %>
               <% end %>
+              </p>
+            <% end %>
+            
+            <% else %>
+             <p>
+                <%= link_to new_user_registration_path do %>
+               <i class="fa-solid fa-heart"></i>ブックマークには新規登録をお願いします。
+                <% end %>
+
               </p>
             <% end %>

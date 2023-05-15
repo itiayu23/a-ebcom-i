@@ -1,7 +1,12 @@
 <div class="container mt-5">
         <div class="row">
           <div class="col">
+
+
 <h1>イラスト投稿ページ</h1>
+
+<% if user_signed_in? %>
+
 <%= form_with model: Pict.new do |f| %>
 
 <table class="table">
@@ -33,6 +38,16 @@
 <%= link_to "投稿の際はこちらを守っていただけますようお願いいたします。", homes_warning_path, class: "text-danger" %>
 
 </table>
+<% end %>
+
+<% else %>
+             <p>
+                <%= link_to "投稿をするには新規登録をお願いします", new_user_registration_path, class: "text text-warning" %>
+             </p>
+             <p>
+                <%= link_to "登録済みの方はこちらからログインをお願いいたします。", new_user_session_path %>
+             </p>
+              
 <% end %>
 
 </div>
