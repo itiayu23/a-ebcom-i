@@ -4,7 +4,7 @@
 
 <h1>小説投稿ページ</h1>
 <% if user_signed_in? %>
-
+<%= render 'layouts/errors', obj: @novel_new %>
 <%= form_with model: @novel_new do |f| %>
 
 <table class="table">

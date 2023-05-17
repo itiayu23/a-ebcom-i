@@ -1,5 +1,5 @@
 <h2>マイページ編集</h2>
-
+<%= render 'layouts/errors', obj: @user %>
 <%= form_with model: @user, url: user_page_path(current_user) do |f| %>
 
 <table class="table">

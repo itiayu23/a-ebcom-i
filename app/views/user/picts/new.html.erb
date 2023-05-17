@@ -4,10 +4,10 @@
 
 
 <h1>イラスト投稿ページ</h1>
-
+<%= render 'layouts/errors', obj: @pict_new  %>
 <% if user_signed_in? %>
 
-<%= form_with model: Pict.new do |f| %>
+<%= form_with model: @pict_new do |f| %>
 
 <table class="table">
 
@@ -47,7 +47,7 @@
              <p>
                 <%= link_to "登録済みの方はこちらからログインをお願いいたします。", new_user_session_path %>
              </p>
-              
+
 <% end %>
 
 </div>

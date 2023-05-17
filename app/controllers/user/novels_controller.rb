@@ -21,7 +21,7 @@ class User::NovelsController < ApplicationController
     else
       @user = current_user
       @novels = @user.novels
-      render :show
+      render :new
     end
 
   end

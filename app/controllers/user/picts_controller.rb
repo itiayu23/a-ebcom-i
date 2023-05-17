@@ -19,7 +19,7 @@ class User::PictsController < ApplicationController
     else
       @user = current_user
       @picts = @user.picts
-      render :show
+      render :new
     end
   end
 

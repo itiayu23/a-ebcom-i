@@ -7,7 +7,7 @@
 
     <%= image_tag @user.get_profile_image(100,100), class: "mt-3 rounded-circle" %>
   <br>
-  <%= @user.name %>
+  <%= @user.nickname %>
   <% end %>
   </td>
 
@@ -35,7 +35,7 @@
   <% if @novel.user == current_user %>
 
 
-       
+
 
 
           <td><%= link_to edit_novel_path(@novel.id), class: "btn btn-sm btn-success" do %>
